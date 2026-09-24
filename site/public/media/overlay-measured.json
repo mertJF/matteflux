@@ -1,0 +1,134 @@
+{
+  "ember-aurora": {
+    "hero-desktop": {
+      "overlay": 0.0,
+      "mp4": 763690,
+      "webm": 221968
+    },
+    "footer-desktop": {
+      "overlay": 0.3,
+      "mp4": 624731,
+      "webm": 236534
+    },
+    "hero-mobile": {
+      "overlay": 0.0,
+      "mp4": 449555,
+      "webm": 133222
+    },
+    "footer-mobile": {
+      "overlay": 0.25,
+      "mp4": 408935,
+      "webm": 140512
+    }
+  },
+  "night-fog": {
+    "hero-desktop": {
+      "overlay": 0.2,
+      "mp4": 199291,
+      "webm": 171665
+    },
+    "footer-desktop": {
+      "overlay": 0.05,
+      "mp4": 130423,
+      "webm": 123781
+    },
+    "hero-mobile": {
+      "overlay": 0.0,
+      "mp4": 74203,
+      "webm": 69137
+    },
+    "footer-mobile": {
+      "overlay": 0.0,
+      "mp4": 59436,
+      "webm": 56271
+    }
+  },
+  "deep-water": {
+    "hero-desktop": {
+      "overlay": 0.0,
+      "mp4": 225290,
+      "webm": 405863
+    },
+    "footer-desktop": {
+      "overlay": 0.0,
+      "mp4": 190894,
+      "webm": 305302
+    },
+    "hero-mobile": {
+      "overlay": 0.0,
+      "mp4": 88797,
+      "webm": 146241
+    },
+    "footer-mobile": {
+      "overlay": 0.0,
+      "mp4": 81118,
+      "webm": 127014
+    }
+  },
+  "drift": {
+    "hero-desktop": {
+      "overlay": 0.0,
+      "mp4": 245693,
+      "webm": 260671
+    },
+    "footer-desktop": {
+      "overlay": 0.0,
+      "mp4": 158222,
+      "webm": 163244
+    },
+    "hero-mobile": {
+      "overlay": 0.0,
+      "mp4": 96284,
+      "webm": 90649
+    },
+    "footer-mobile": {
+      "overlay": 0.0,
+      "mp4": 76450,
+      "webm": 72987
+    }
+  },
+  "violet-tide": {
+    "hero-desktop": {
+      "overlay": 0.0,
+      "mp4": 222555,
+      "webm": 223273
+    },
+    "footer-desktop": {
+      "overlay": 0.0,
+      "mp4": 133290,
+      "webm": 165694
+    },
+    "hero-mobile": {
+      "overlay": 0.0,
+      "mp4": 84200,
+      "webm": 84908
+    },
+    "footer-mobile": {
+      "overlay": 0.0,
+      "mp4": 61653,
+      "webm": 66782
+    }
+  },
+  "contour": {
+    "hero-desktop": {
+      "overlay": 0.0,
+      "mp4": 759703,
+      "webm": 1507971
+    },
+    "footer-desktop": {
+      "overlay": 0.0,
+      "mp4": 672691,
+      "webm": 1360833
+    },
+    "hero-mobile": {
+      "overlay": 0.0,
+      "mp4": 269674,
+      "webm": 530260
+    },
+    "footer-mobile": {
+      "overlay": 0.0,
+      "mp4": 259415,
+      "webm": 533686
+    }
+  }
+}

@@ -1,0 +1,11 @@
+[
+  { "q": "What exactly is in a set?", "a": "A hero and a footer from the same visual family. Each comes as desktop and mobile videos in MP4 and WebM, with poster images, copy-paste code for HTML/CSS, Framer and Webflow, and a README with recommended overlay values.", "home": true },
+  { "q": "Will a video background slow my site down?", "a": "The files are built to be light: the Ember Aurora hero is 217 KB as WebM at 2560×1440. The poster image shows instantly, the footer video only loads when it scrolls into view, and visitors who prefer reduced motion or have Data Saver on get the still poster instead.", "home": true },
+  { "q": "Is this made with AI?", "a": "No. Every set is rendered with code: mathematical wave fields, not a generative video model. That is what makes the loops exact and keeps the edges clean.", "home": true },
+  { "q": "Can I use a set for client work?", "a": "Yes, with the Commercial license: unlimited projects, including sites you build for clients. The Personal license covers one website of your own.", "home": true },
+  { "q": "Why are desktop and mobile separate files?", "a": "A 16:9 video cropped to a phone screen loses most of its composition. Each set is rendered separately for 16:9, 9:16, 3:1 and 4:5, so the light sits in the right place on every screen. The included code picks the right file automatically.", "home": false },
+  { "q": "Can I change the colors or the speed?", "a": "The videos are finished files, so colors and speed are fixed. You can set how dark they look with the overlay value, and where the frame is centred with the focus point.", "home": false },
+  { "q": "Do I get updates?", "a": "Yes. Any improvement to a set you have bought is free to download again.", "home": true },
+  { "q": "Which platforms does it work with?", "a": "Any website that can show an HTML video. The package includes ready-made code for plain HTML/CSS, Framer and Webflow. On Webflow, custom code needs a plan that allows it.", "home": false },
+  { "q": "What is your refund policy?", "a": "[PLACEHOLDER: refund policy summary, written in Phase 4]", "home": true }
+]

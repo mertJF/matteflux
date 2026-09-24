@@ -1,0 +1,13 @@
+# Cloudflare Pages response headers.
+# Fingerprinted CSS/JS never change under the same name.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Videos and posters keep their names when a set is re-rendered,
+# so cache for a day and refresh in the background.
+/media/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
