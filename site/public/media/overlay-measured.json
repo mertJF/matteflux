@@ -2,23 +2,23 @@
   "ember-aurora": {
     "hero-desktop": {
       "overlay": 0.0,
-      "mp4": 763690,
-      "webm": 221968
+      "mp4": 782509,
+      "webm": 218854
     },
     "footer-desktop": {
       "overlay": 0.3,
-      "mp4": 624731,
-      "webm": 236534
+      "mp4": 641060,
+      "webm": 231896
     },
     "hero-mobile": {
       "overlay": 0.0,
-      "mp4": 449555,
-      "webm": 133222
+      "mp4": 456250,
+      "webm": 130528
     },
     "footer-mobile": {
       "overlay": 0.25,
-      "mp4": 408935,
-      "webm": 140512
+      "mp4": 419633,
+      "webm": 137214
     }
   },
   "night-fog": {
@@ -38,7 +38,7 @@
       "webm": 69137
     },
     "footer-mobile": {
-      "overlay": 0.0,
+      "overlay": 0.05,
       "mp4": 59436,
       "webm": 56271
     }
