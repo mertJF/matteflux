@@ -200,8 +200,8 @@ console.log("\n[desktop] catalog and set page");
   const n = await open("desktop", "/sets/contour/");
   await sleep(2000);
   const hc = await heroState(n.page);
-  ok(hc && /contour-hero-desktop\.webm$/.test(hc.src) && !hc.paused, "preview set page (Contour) plays");
-  ok(await n.page.isVisible("text=Coming soon"), "preview set shows Coming soon");
+  ok(hc && /contour-hero-desktop\.webm$/.test(hc.src) && !hc.paused, "set page (Contour) plays");
+  ok(await n.page.isVisible("text=Free"), "released set shows Free label");
   await n.ctx.close();
 
   for (const [vp, path] of [["desktop", "/docs/"], ["mobile", "/sets/ember-aurora/"], ["mobile", "/docs/"]]) {

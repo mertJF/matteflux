@@ -5,15 +5,15 @@
       "mp4": 782509,
       "webm": 218854
     },
-    "footer-desktop": {
-      "overlay": 0.3,
-      "mp4": 641060,
-      "webm": 231896
-    },
     "hero-mobile": {
       "overlay": 0.0,
       "mp4": 456250,
       "webm": 130528
+    },
+    "footer-desktop": {
+      "overlay": 0.3,
+      "mp4": 641060,
+      "webm": 231896
     },
     "footer-mobile": {
       "overlay": 0.25,
@@ -23,112 +23,112 @@
   },
   "night-fog": {
     "hero-desktop": {
-      "overlay": 0.2,
-      "mp4": 199291,
-      "webm": 171665
-    },
-    "footer-desktop": {
-      "overlay": 0.05,
-      "mp4": 130423,
-      "webm": 123781
+      "overlay": 0.25,
+      "mp4": 1027506,
+      "webm": 269846
     },
     "hero-mobile": {
       "overlay": 0.0,
-      "mp4": 74203,
-      "webm": 69137
+      "mp4": 548835,
+      "webm": 141317
+    },
+    "footer-desktop": {
+      "overlay": 0.15,
+      "mp4": 788211,
+      "webm": 232023
     },
     "footer-mobile": {
-      "overlay": 0.05,
-      "mp4": 59436,
-      "webm": 56271
+      "overlay": 0.1,
+      "mp4": 452899,
+      "webm": 128949
     }
   },
   "deep-water": {
     "hero-desktop": {
       "overlay": 0.0,
-      "mp4": 225290,
-      "webm": 405863
-    },
-    "footer-desktop": {
-      "overlay": 0.0,
-      "mp4": 190894,
-      "webm": 305302
+      "mp4": 1438569,
+      "webm": 590622
     },
     "hero-mobile": {
       "overlay": 0.0,
-      "mp4": 88797,
-      "webm": 146241
+      "mp4": 811578,
+      "webm": 287060
+    },
+    "footer-desktop": {
+      "overlay": 0.0,
+      "mp4": 1195370,
+      "webm": 642941
     },
     "footer-mobile": {
-      "overlay": 0.0,
-      "mp4": 81118,
-      "webm": 127014
+      "overlay": 0.05,
+      "mp4": 670472,
+      "webm": 320664
     }
   },
   "drift": {
     "hero-desktop": {
       "overlay": 0.0,
-      "mp4": 245693,
-      "webm": 260671
-    },
-    "footer-desktop": {
-      "overlay": 0.0,
-      "mp4": 158222,
-      "webm": 163244
+      "mp4": 807696,
+      "webm": 258175
     },
     "hero-mobile": {
       "overlay": 0.0,
-      "mp4": 96284,
-      "webm": 90649
+      "mp4": 534823,
+      "webm": 223473
+    },
+    "footer-desktop": {
+      "overlay": 0.0,
+      "mp4": 596365,
+      "webm": 232871
     },
     "footer-mobile": {
       "overlay": 0.0,
-      "mp4": 76450,
-      "webm": 72987
+      "mp4": 443026,
+      "webm": 212862
     }
   },
   "violet-tide": {
     "hero-desktop": {
       "overlay": 0.0,
-      "mp4": 222555,
-      "webm": 223273
-    },
-    "footer-desktop": {
-      "overlay": 0.0,
-      "mp4": 133290,
-      "webm": 165694
+      "mp4": 1087860,
+      "webm": 280851
     },
     "hero-mobile": {
       "overlay": 0.0,
-      "mp4": 84200,
-      "webm": 84908
+      "mp4": 572243,
+      "webm": 148330
+    },
+    "footer-desktop": {
+      "overlay": 0.0,
+      "mp4": 796911,
+      "webm": 251933
     },
     "footer-mobile": {
       "overlay": 0.0,
-      "mp4": 61653,
-      "webm": 66782
+      "mp4": 457276,
+      "webm": 127169
     }
   },
   "contour": {
     "hero-desktop": {
       "overlay": 0.0,
-      "mp4": 759703,
-      "webm": 1507971
-    },
-    "footer-desktop": {
-      "overlay": 0.0,
-      "mp4": 672691,
-      "webm": 1360833
+      "mp4": 3992398,
+      "webm": 2260035
     },
     "hero-mobile": {
       "overlay": 0.0,
-      "mp4": 269674,
-      "webm": 530260
+      "mp4": 1885756,
+      "webm": 1113125
+    },
+    "footer-desktop": {
+      "overlay": 0.0,
+      "mp4": 3741970,
+      "webm": 2526027
     },
     "footer-mobile": {
       "overlay": 0.0,
-      "mp4": 259415,
-      "webm": 533686
+      "mp4": 1860291,
+      "webm": 1199466
     }
   }
 }

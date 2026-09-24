@@ -1,25 +1,21 @@
 """
 Builds site media for matteflux.com.
 
-- Set 01: copies the final production files from the Set 1 build.
-- Sets 02-06: cuts the Phase 1 preview atlases (1280x976) into the same
-  four formats and folder layout as a real set, so the site treats every
-  set the same. Marked "preview" in sets.json until final renders exist.
-- Measures the overlay for white text on every format (same method as
-  matteflux_render.py) and writes it to overlay-measured.json.
+Copies production renders from production/build/ into the site media folder,
+measures the overlay for white text on every format, and writes overlay data
+to overlay-measured.json.
 
-Usage: python build_site_media.py <phase1-media-dir> <set1-build-dir> <out-dir>
+Usage: python build_site_media.py <production-build-dir> <out-dir>
 """
 import json, os, shutil, subprocess, sys
 import numpy as np
-from PIL import Image
 
-PH1, SET1, OUT = sys.argv[1:4]
-SLUGS = {1: "ember-aurora", 2: "night-fog", 3: "deep-water", 4: "drift", 5: "violet-tide", 6: "contour"}
-REGIONS = {  # atlas crops: x, y, w, h
-    "hero-desktop": (0, 0, 960, 540), "footer-desktop": (0, 540, 960, 320),
-    "hero-mobile": (960, 0, 320, 568), "footer-mobile": (960, 568, 320, 400),
-}
+BUILD, OUT = sys.argv[1:3]
+SETS = [
+    ("01", "ember-aurora"), ("02", "night-fog"), ("03", "deep-water"),
+    ("04", "drift"), ("05", "violet-tide"), ("06", "contour"),
+]
+FORMATS = ["hero-desktop", "hero-mobile", "footer-desktop", "footer-mobile"]
 ZONES = {
     "hero-desktop": (0.10, 0.90, 0.35, 0.85), "hero-mobile": (0.06, 0.94, 0.40, 0.92),
     "footer-desktop": (0.03, 0.97, 0.10, 0.90), "footer-mobile": (0.06, 0.94, 0.08, 0.92),
@@ -36,8 +32,6 @@ def measure(path, fmt):
     w, h = map(int, subprocess.check_output(
         ["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
          "stream=width,height", "-of", "csv=p=0", path]).decode().split(","))
-    # Measure on a 320px-wide copy: the fields are soft, so this is exact
-    # enough and keeps memory low.
     sw = 320
     h = int(round(h * sw / w / 2) * 2)
     w = sw
@@ -54,43 +48,27 @@ def measure(path, fmt):
     return 0.9
 
 
-def encode(src, crop, dst_base):
-    x, y, w, h = crop
-    vf = f"crop={w}:{h}:{x}:{y}"
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", src, "-vf", vf, "-c:v", "libx264",
-                    "-preset", "medium", "-crf", "28", "-pix_fmt", "yuv420p",
-                    "-movflags", "+faststart", "-an", dst_base + ".mp4"], check=True)
-    subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", src, "-vf", vf, "-c:v", "libvpx-vp9",
-                    "-crf", "36", "-b:v", "0", "-deadline", "realtime", "-cpu-used", "8",
-                    "-row-mt", "1", "-pix_fmt", "yuv420p", "-an", dst_base + ".webm"], check=True)
-
-
 result = {}
-for n, slug in SLUGS.items():
-    base = os.path.join(OUT, slug)
+for num, slug in SETS:
+    src_dir = os.path.join(BUILD, f"matteflux-{num}-{slug}")
+    dst_dir = os.path.join(OUT, slug)
     for d in ("hero", "footer", "posters"):
-        os.makedirs(os.path.join(base, d), exist_ok=True)
+        os.makedirs(os.path.join(dst_dir, d), exist_ok=True)
     result[slug] = {}
-    for fmt, crop in REGIONS.items():
+    for fmt in FORMATS:
         kind = fmt.split("-")[0]
-        dst = os.path.join(base, kind, f"{slug}-{fmt}")
-        post = os.path.join(base, "posters", f"{slug}-{fmt}")
-        if n == 1:
-            for ext in ("mp4", "webm"):
-                shutil.copy(os.path.join(SET1, kind, f"{slug}-{fmt}.{ext}"), f"{dst}.{ext}")
-            for ext in ("jpg", "webp"):
-                shutil.copy(os.path.join(SET1, "posters", f"{slug}-{fmt}.{ext}"), f"{post}.{ext}")
-        elif not os.path.exists(dst + ".webm"):
-            src = os.path.join(PH1, f"set{n}.mp4")
-            encode(src, crop, dst)
-            x, y, w, h = crop
-            img = Image.open(os.path.join(PH1, f"set{n}-poster.jpg")).crop((x, y, x + w, y + h))
-            img.save(post + ".jpg", quality=80, optimize=True, progressive=True)
-            img.save(post + ".webp", quality=78, method=6)
+        src_base = os.path.join(src_dir, kind, f"{slug}-{fmt}")
+        dst_base = os.path.join(dst_dir, kind, f"{slug}-{fmt}")
+        post_src = os.path.join(src_dir, "posters", f"{slug}-{fmt}")
+        post_dst = os.path.join(dst_dir, "posters", f"{slug}-{fmt}")
+        for ext in ("mp4", "webm"):
+            shutil.copy(f"{src_base}.{ext}", f"{dst_base}.{ext}")
+        for ext in ("jpg", "webp"):
+            shutil.copy(f"{post_src}.{ext}", f"{post_dst}.{ext}")
         result[slug][fmt] = {
-            "overlay": measure(dst + ".mp4", fmt),
-            "mp4": os.path.getsize(dst + ".mp4"),
-            "webm": os.path.getsize(dst + ".webm"),
+            "overlay": measure(f"{dst_base}.mp4", fmt),
+            "mp4": os.path.getsize(f"{dst_base}.mp4"),
+            "webm": os.path.getsize(f"{dst_base}.webm"),
         }
     print(slug, {k: v["overlay"] for k, v in result[slug].items()}, flush=True)
 
