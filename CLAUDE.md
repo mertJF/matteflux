@@ -97,7 +97,7 @@ uygulanır. Örnek renk rampası: #0A0B0E → #0E181E → #163A40 → #966034 �
 3. Derin mavi su yüzeyi yansıması
 4. Uzakta süzülen partiküller
 5. Mor-lacivert akışkan gradyan
-6. İnce çizgili topografik dalga
+6. Sıcak-soğuk gaz bulutsusu (nebula)
 
 ## 6. MARKA
 - İsim: Matteflux. Domain: matteflux.com
@@ -122,7 +122,7 @@ uygulanır. Örnek renk rampası: #0A0B0E → #0E181E → #163A40 → #966034 �
 
 ## 8. ÇALIŞMA SIRASI
 Faz 1 — Deneyim tasarımı ✅
-Faz 2 — Üretim: Set 1 ✅. Set 2–6 lansman öncesi üretilecek (bkz. durum).
+Faz 2 — Üretim: Tüm 6 set ✅.
 Faz 3 — Site ✅
 Faz 4 — Lansman hazırlığı: GitHub repo düzeni, indirme akışı, site
   güncellemeleri (ücretli içerik kaldırma, star CTA ekleme).  ← SIRADAKİ
@@ -162,8 +162,7 @@ CLAUDE.md     bu dosya
   03 Deep Water: hero desktop WebM 576 KB.
   04 Drift: hero desktop WebM 252 KB.
   05 Violet Tide: hero desktop WebM 274 KB.
-  06 Contour: hero desktop WebM 2207 KB (ince çizgiler yüksek frekanslı,
-  optimize edilebilir).
+  06 Nebula: hero desktop WebM 318 KB.
 - Overlay: metin alanındaki piksellerin %99.5'inde beyaz metin 4.5:1
   kontrasta ulaşan en düşük değer ölçülür. Önerilen = ölçülen + %5,
   taban hero %20, footer %25 (derleme sırasında hesaplanır).
@@ -173,7 +172,7 @@ CLAUDE.md     bu dosya
   (`site/src/config.mjs` ve `src/pages/content.mjs`).
 - Lansman öncesi: fontları self-host et (Google Fonts yerine); iPhone
   Safari'de ve MP4 yolunda gerçek cihaz testi (test tarayıcısı Chromium,
-  H.264 oynatmıyor); Set 06 Contour dosya boyutu optimizasyonu (2.2 MB).
+  H.264 oynatmıyor).
 - GitHub repo düzeni: README, releases veya indirme yapısı, lisans dosyası.
 - Videolar büyüyünce `config.mjs` → `mediaBase` ile R2/CDN'e taşı.
 
