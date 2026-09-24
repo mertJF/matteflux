@@ -61,11 +61,11 @@ def vignette(x, y, asp, strength):
     return 1 - strength * np.clip(d * 1.25, 0, 1) ** 2
 
 
-def warp(x, y, p, amt):
-    wx = x + amt * np.sin(TAU * (0.9 * y + 0.35 * x) + p) \
-           + 0.5 * amt * np.sin(TAU * (1.7 * x - 0.6 * y) - 2 * p)
-    wy = y + amt * np.sin(TAU * (0.8 * x - 0.3 * y) + 2 * p + 1.3) \
-           + 0.5 * amt * np.sin(TAU * (1.3 * y + 0.9 * x) + p)
+def warp(x, y, p, amt, k=(1, 2)):
+    wx = x + amt * np.sin(TAU * (0.9 * y + 0.35 * x) + k[0] * p) \
+           + 0.5 * amt * np.sin(TAU * (1.7 * x - 0.6 * y) - k[1] * p)
+    wy = y + amt * np.sin(TAU * (0.8 * x - 0.3 * y) + k[1] * p + 1.3) \
+           + 0.5 * amt * np.sin(TAU * (1.3 * y + 0.9 * x) + k[0] * p)
     return wx, wy
 
 
@@ -104,8 +104,109 @@ def ember_aurora(w, h, kind, p):
     return ramp(v * 0.78, ["#0A0B0E", "#0E181E", "#163A40", "#966034", "#E8AA68"])
 
 
+def night_fog(w, h, kind, p):
+    """Set 02 — slow, low-contrast haze rolling past."""
+    x, y, asp = coords(w, h)
+    acc = np.zeros_like(x)
+    for i, (f, sp, a) in enumerate([(0.6, 1, 1.0), (1.1, -1, 0.6), (2.0, 2, 0.35)]):
+        wx, wy = warp(x * f, y * f, p * sp, 0.3, (1, 1))
+        acc += a * (0.5 + 0.5 * np.sin(TAU * (wx * 0.8 + wy * 0.4) + i * 2.1))
+    v = acc / 1.95
+    v = v ** 1.6 * (0.55 + 0.45 * y) * vignette(x, y, asp, 0.6)
+    return ramp(np.clip(v * 1.35, 0, 1), ["#08090B", "#11151A", "#232B34", "#46525E", "#8F9AA5"])
+
+
+def deep_water(w, h, kind, p):
+    """Set 03 — caustic light on a dark water surface."""
+    x, y, asp = coords(w, h)
+    portrait = asp < 1
+    persp = 0.35 + y
+    acc = np.zeros_like(x)
+    for i, (fx, fy, k) in enumerate([(3, 7, 1), (-4, 5, 2), (5, 9, -1), (2, 11, 3)]):
+        acc += np.sin(TAU * (fx * x + fy * y * persp) / 2.2 + k * p + i)
+    caust = np.exp(-(acc / 0.9) ** 2)
+    depth = 0.25 + 0.45 * y
+    v = (depth * 0.6 + caust * 0.45 * (0.3 + y)) * vignette(x, y, asp, 0.5)
+    if kind == "hero":
+        cy = 0.60 if portrait else 0.55
+        v *= 1 - 0.3 * np.exp(-(((x - asp / 2) / (0.5 * asp)) ** 2 + ((y - cy) / 0.25) ** 2))
+    return ramp(v, ["#03070C", "#071A2A", "#0F3A55", "#2B7394", "#A8DCE8"])
+
+
+_rng = np.random.default_rng(4)
+_PART = {
+    "x": _rng.random(260), "y": _rng.random(260), "z": _rng.random(260) ** 2,
+    "k": _rng.integers(1, 3, 260), "ph": _rng.random(260) * TAU,
+}
+
+
+def drift(w, h, kind, p):
+    """Set 04 — distant particles gliding across a quiet field."""
+    x, y, asp = coords(w, h)
+    cw, ch = x.shape[1], x.shape[0]
+    base = ramp(0.25 + 0.35 * (1 - y) * vignette(x, y, asp, 0.7),
+                ["#07080B", "#0C1017", "#131B26", "#1E2A38"])
+    P = _PART
+    n = min(260, int(220 * (cw * ch) / (480 * 270)) + 40)
+    t = p / TAU
+    px = ((P["x"][:n] + t * P["k"][:n].astype(float)) % 1.0) * cw
+    py = (P["y"][:n] + 0.015 * np.sin(p * P["k"][:n] + P["ph"][:n])) * ch
+    tw = 0.6 + 0.4 * np.sin(p * 2 * P["k"][:n] + P["ph"][:n])
+    warm, cool = hexrgb("#E8C89A"), hexrgb("#9FB8D0")
+    for i in range(n):
+        r = 0.8 + 2.0 * P["z"][i]
+        rr = int(r * 3) + 1
+        ci, ri = int(px[i]), int(py[i])
+        x0, x1 = max(ci - rr, 0), min(ci + rr + 1, cw)
+        y0, y1 = max(ri - rr, 0), min(ri + rr + 1, ch)
+        if x0 >= x1 or y0 >= y1:
+            continue
+        yy, xx = np.mgrid[y0:y1, x0:x1]
+        g = np.exp(-((xx - px[i]) ** 2 + (yy - py[i]) ** 2) / (2 * r * r))
+        col = warm if i % 3 == 0 else cool
+        base[y0:y1, x0:x1] += g[..., None] * col * (0.25 + 0.6 * P["z"][i]) * tw[i]
+    return np.clip(base, 0, 1)
+
+
+def violet_tide(w, h, kind, p):
+    """Set 05 — fluid violet folding into midnight navy."""
+    x, y, asp = coords(w, h)
+    wx, wy = warp(x, y, p, 0.28)
+    wx, wy = warp(wx * 0.8, wy * 0.8, -p, 0.18, (2, 1))
+    v = 0.5 + 0.5 * np.sin(TAU * (0.6 * wx + 0.9 * wy) + p)
+    v = 0.15 + 0.75 * v ** 2 * (0.4 + 0.6 * (1 - y if kind == "hero" else y))
+    v *= vignette(x, y, asp, 0.5)
+    return ramp(v, ["#07071A", "#141236", "#2A1F63", "#5B3FA6", "#B895E6"])
+
+
+def contour(w, h, kind, p):
+    """Set 06 — fine topographic lines in slow motion."""
+    x, y, asp = coords(w, h)
+    portrait = asp < 1
+    wx, wy = warp(x, y, p, 0.10)
+    f = (np.sin(TAU * (0.7 * wx + 0.2 * wy) + p)
+         + 0.8 * np.sin(TAU * (0.5 * wy - 0.4 * wx) - p + 1.0)
+         + 0.4 * np.sin(TAU * (1.3 * wx + 1.1 * wy) + 2 * p))
+    bands = 7
+    fr = (f * bands) % 1.0
+    d = np.minimum(fr, 1 - fr) / (np.abs(np.gradient(f * bands, axis=1)) + np.abs(np.gradient(f * bands, axis=0)) + 1e-4)
+    line = np.clip(1.2 - d, 0, 1)
+    fade = vignette(x, y, asp, 0.75)
+    if kind == "hero":
+        cy = 0.60 if portrait else 0.56
+        fade *= 1 - 0.55 * np.exp(-(((x - asp / 2) / (0.42 * asp)) ** 2 + ((y - cy) / 0.2) ** 2))
+    bg = ramp(0.2 + 0.15 * (0.5 + 0.5 * f / 2.2), ["#0A0B0B", "#121414", "#1B1F1E"])
+    rgb = bg + line[..., None] * fade[..., None] * hexrgb("#C9C2B0") * 0.42
+    return np.clip(rgb, 0, 1)
+
+
 SETS = {
     "01": {"slug": "ember-aurora", "title": "Ember Aurora", "fn": ember_aurora},
+    "02": {"slug": "night-fog", "title": "Night Fog", "fn": night_fog},
+    "03": {"slug": "deep-water", "title": "Deep Water", "fn": deep_water},
+    "04": {"slug": "drift", "title": "Drift", "fn": drift},
+    "05": {"slug": "violet-tide", "title": "Violet Tide", "fn": violet_tide},
+    "06": {"slug": "contour", "title": "Contour", "fn": contour},
 }
 
 

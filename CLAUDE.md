@@ -155,24 +155,25 @@ CLAUDE.md     bu dosya
   çıktı `dist`. `public/_headers` önbellek ayarlarını içerir.
 
 ## Setler
-- 01 Ember Aurora: FİNAL. 10 sn, 24 fps, 4 format × (MP4 + WebM).
-  Hero desktop WebM 217 KB / MP4 746 KB. Döngü dikişi ölçüldü, görünmez.
-- 02–06: Faz 1 önizlemeleri (960 px atlas kesimleri), sitede "Preview /
-  Coming soon". Final için `matteflux_render.py` içindeki `SETS`'e her set
-  için bir fonksiyon eklenecek; görsel referans `generate_preview_atlas.py`.
+- Tüm 6 set FİNAL. 10 sn, 24 fps, 4 format × (MP4 + WebM), COMPUTE_DIV=2.
+  Döngü dikişi ölçüldü, hepsi görünmez (max 1 piksel fark).
+  01 Ember Aurora: hero desktop WebM 213 KB.
+  02 Night Fog: hero desktop WebM 263 KB.
+  03 Deep Water: hero desktop WebM 576 KB.
+  04 Drift: hero desktop WebM 252 KB.
+  05 Violet Tide: hero desktop WebM 274 KB.
+  06 Contour: hero desktop WebM 2207 KB (ince çizgiler yüksek frekanslı,
+  optimize edilebilir).
 - Overlay: metin alanındaki piksellerin %99.5'inde beyaz metin 4.5:1
   kontrasta ulaşan en düşük değer ölçülür. Önerilen = ölçülen + %5,
   taban hero %20, footer %25 (derleme sırasında hesaplanır).
 
 ## Açık işler
-- Site güncellemesi: fiyatlandırma, Polar checkout, lisans sayfaları gibi
-  ücretli modele ait öğeleri siteden kaldır; "Star on GitHub" CTA'sı ekle;
-  indirme akışını GitHub'a yönlendir.
 - Yer tutucular: iletişim e-postası, sosyal linkler
   (`site/src/config.mjs` ve `src/pages/content.mjs`).
-- Lansman öncesi: Set 2–6 final render; fontları self-host et (Google
-  Fonts yerine); iPhone Safari'de ve MP4 yolunda gerçek cihaz testi
-  (test tarayıcısı Chromium, H.264 oynatmıyor).
+- Lansman öncesi: fontları self-host et (Google Fonts yerine); iPhone
+  Safari'de ve MP4 yolunda gerçek cihaz testi (test tarayıcısı Chromium,
+  H.264 oynatmıyor); Set 06 Contour dosya boyutu optimizasyonu (2.2 MB).
 - GitHub repo düzeni: README, releases veya indirme yapısı, lisans dosyası.
 - Videolar büyüyünce `config.mjs` → `mediaBase` ile R2/CDN'e taşı.
 
