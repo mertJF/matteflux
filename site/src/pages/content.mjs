@@ -73,7 +73,7 @@ export function docs({ defaultSet: d }) {
 
       <h2 id="overlay">Overlay and legibility</h2>
       <p>The overlay is a dark layer between the video and your text, set with <code>--mf-overlay</code> (0 to 1). For every set we measure each pixel of the text area across the whole loop, and find the lowest overlay at which white text reaches a 4.5:1 contrast ratio (WCAG AA) on 99.5% of pixels.</p>
-      <p>The recommended value adds headroom on top of that minimum: at least 20% for heroes and 25% for footers, or the measured minimum plus 5% if that is higher. Both numbers are in each set’s README and on its page.</p>
+      <p>The recommended value adds headroom on top of that minimum: at least 20% for heroes and 25% for footers, or the measured minimum plus 5% if that is higher. Both numbers are in each set's README and on its page.</p>
       ${codeBlock("CSS", "CSS", `/* Darker for small text or busy layouts */
 .mf-bg { --mf-overlay: 0.35; }
 
@@ -86,7 +86,7 @@ export function docs({ defaultSet: d }) {
         <li><strong>Hero loads right away, footer loads late.</strong> <code>data-mf-load="eager"</code> for heroes, <code>"lazy"</code> for everything below the fold.</li>
         <li><strong>Videos pause off screen.</strong> No CPU is spent on a video nobody is looking at.</li>
         <li><strong>Reduced motion and Data Saver</strong> get the poster only. No video is downloaded at all.</li>
-        <li><strong>WebM first.</strong> It is usually a third of the MP4 size; MP4 is the fallback for any browser that can’t play WebM.</li>
+        <li><strong>WebM first.</strong> It is usually a third of the MP4 size; MP4 is the fallback for any browser that can't play WebM.</li>
       </ul>
 
       <h2 id="hosting">Hosting the files</h2>
@@ -94,11 +94,11 @@ export function docs({ defaultSet: d }) {
 
       <h2 id="mistakes">Common mistakes</h2>
       <dl class="qa">
-        <dt>The video doesn’t autoplay on iPhone.</dt><dd>Keep <code>muted</code> and <code>playsinline</code> on the <code>&lt;video&gt;</code> tag. Low Power Mode can also block autoplay; the poster stays visible in that case.</dd>
+        <dt>The video doesn't autoplay on iPhone.</dt><dd>Keep <code>muted</code> and <code>playsinline</code> on the <code>&lt;video&gt;</code> tag. Low Power Mode can also block autoplay; the poster stays visible in that case.</dd>
         <dt>The video covers my text.</dt><dd>The section needs <code>position: relative</code> and <code>isolation: isolate</code> (the <code>.mf-section</code> class does both), or give your content <code>position: relative; z-index: 1</code>.</dd>
         <dt>Mobile shows the desktop video.</dt><dd>Check the <code>data-mf-mobile</code> path. The default breakpoint is 767 px; change it with <code>data-mf-breakpoint="900"</code> on a parent element.</dd>
         <dt>Nothing plays when I open the file directly.</dt><dd>Some browsers block video from <code>file://</code>. Run a local server in the set folder, for example <code>python -m http.server</code>.</dd>
-        <dt>The video jumps once per loop.</dt><dd>Make sure the files weren’t re-encoded or trimmed by a site builder. The original files loop exactly.</dd>
+        <dt>The video jumps once per loop.</dt><dd>Make sure the files weren't re-encoded or trimmed by a site builder. The original files loop exactly.</dd>
       </dl>
 
       <h2 id="reference">Reference</h2>
@@ -120,55 +120,12 @@ export function docs({ defaultSet: d }) {
 ${siteFooter(d)}`;
 }
 
-// ------------------------------------------------------------- /license/
-export function license({ defaultSet: d }) {
-  return html`${plainHead("License", "Plain-English summary. The full terms below are what apply.", "/license/")}
-<main id="main" class="section section--tight">
-  <div class="wrap narrow prose">
-    <h2>In short</h2>
-    <div class="table-wrap"><table class="table">
-      <thead><tr><th scope="col"></th><th scope="col">Personal</th><th scope="col">Commercial</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">Websites</th><td>1 website you own</td><td>Unlimited</td></tr>
-        <tr><th scope="row">Client work</th><td>No</td><td>Yes</td></tr>
-        <tr><th scope="row">Free updates</th><td>Yes</td><td>Yes</td></tr>
-        <tr><th scope="row">Resell or share the video files on their own, or inside a template, theme or asset pack</th><td>No</td><td>No</td></tr>
-      </tbody>
-    </table></div>
-    <h2>Full terms</h2>
-    <p class="placeholder">[PLACEHOLDER: full license text in plain English, written in Phase 4. It must match the summary above and the README.]</p>
-    <p>Questions about a specific use? Email <a href="mailto:${config.contactEmail}">${config.contactEmail}</a>.</p>
-  </div>
-</main>
-${siteFooter(d)}`;
-}
-
 // ----------------------------------------------------------------- /faq/
 export function faqPage({ defaultSet: d, faq }) {
   return html`${plainHead("Questions", null, "/faq/")}
 <main id="main" class="section section--tight">
   <div class="wrap narrow">${faqList(faq)}
     <p class="muted faq-more">Something else? Email <a href="mailto:${config.contactEmail}">${config.contactEmail}</a>.</p>
-  </div>
-</main>
-${siteFooter(d)}`;
-}
-
-// ---------------------------------------------------------------- legal
-const LEGAL = {
-  terms: ["Terms of service", ["Who we are and how to contact us", "Buying: prices, taxes, Polar as the checkout provider", "Delivery of digital files", "License (links to /license/)", "Liability and warranty", "Governing law"]],
-  privacy: ["Privacy policy", ["What we collect: email for the free set, purchase data via Polar", "Why and on what legal basis", "Processors: hosting, Polar, email service, fonts", "How long we keep it", "Your rights and how to use them", "Cookies and analytics (if any)"]],
-  refunds: ["Refund policy", ["When a refund is possible for digital files", "How to ask for one", "How long it takes"]],
-};
-
-export function legal(key, { defaultSet: d }) {
-  const [title, topics] = LEGAL[key];
-  return html`${plainHead(title, null, "")}
-<main id="main" class="section section--tight">
-  <div class="wrap narrow prose">
-    <p class="placeholder">[PLACEHOLDER: ${title.toLowerCase()} text, written in Phase 4.]</p>
-    <p class="muted">Should cover:</p>
-    <ul>${topics.map((t) => html`<li>${t}</li>`)}</ul>
   </div>
 </main>
 ${siteFooter(d)}`;

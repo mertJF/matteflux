@@ -3,7 +3,7 @@
 // Checks every page on desktop and mobile for JS errors, broken local
 // requests and sideways scrolling; checks that videos really play, that the
 // right composition loads per screen size, and that the set switcher,
-// preview toggle, catalog filters, license toggle and form behave.
+// preview toggle and catalog filters behave.
 import { spawn } from "node:child_process";
 import { mkdirSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
@@ -129,17 +129,9 @@ console.log("\n[desktop] home behaviour");
   ok(f.src === "deep-water-footer-desktop.webm" && !f.paused, `footer lazy-loads the switched set (${f.src})`);
   await page.screenshot({ path: `${SHOTS}/home-desktop-footer.png` });
 
-  await page.locator("#pricing").scrollIntoViewIfNeeded();
-  await page.click('#pricing [data-license="commercial"]');
-  const href = await page.getAttribute("#pricing .price-card--featured a", "href");
-  ok(href === "[POLAR_URL_COLLECTION_COMMERCIAL]", `license toggle switches checkout link (${href})`);
-
-  await page.fill("#free-email", "not-an-email");
-  await page.click("#free button[type=submit]");
-  ok(/Enter an email/.test(await page.textContent("[data-free-status]")), "form rejects a bad email");
-  await page.fill("#free-email", "you@studio.com");
-  await page.click("#free button[type=submit]");
-  ok(/isn’t connected/.test(await page.textContent("[data-free-status]")) && page.url().endsWith("/"), "unconnected form doesn't navigate");
+  await page.locator("#github").scrollIntoViewIfNeeded();
+  const ghLink = await page.getAttribute("#github .btn", "href");
+  ok(ghLink && ghLink.includes("github.com"), `GitHub CTA links to repo (${ghLink})`);
 
   await page.screenshot({ path: `${SHOTS}/home-desktop-full.png`, fullPage: true });
   await ctx.close();
@@ -155,7 +147,7 @@ console.log("\n[mobile] home behaviour");
   await page.screenshot({ path: `${SHOTS}/home-mobile-hero.png` });
   await page.click(".nav-toggle");
   await sleep(300);
-  ok(await page.isVisible("#site-nav a[href='/pricing/']"), "mobile menu opens");
+  ok(await page.isVisible("#site-nav a[href='/sets/']"), "mobile menu opens");
   await page.screenshot({ path: `${SHOTS}/home-mobile-menu.png` });
   await page.keyboard.press("Escape");
   await page.screenshot({ path: `${SHOTS}/home-mobile-full.png`, fullPage: true });
@@ -209,10 +201,10 @@ console.log("\n[desktop] catalog and set page");
   await sleep(2000);
   const hc = await heroState(n.page);
   ok(hc && /contour-hero-desktop\.webm$/.test(hc.src) && !hc.paused, "preview set page (Contour) plays");
-  ok(await n.page.isVisible("text=Coming soon"), "preview set shows Coming soon instead of Buy");
+  ok(await n.page.isVisible("text=Coming soon"), "preview set shows Coming soon");
   await n.ctx.close();
 
-  for (const [vp, path] of [["desktop", "/docs/"], ["mobile", "/sets/ember-aurora/"], ["desktop", "/pricing/"], ["mobile", "/docs/"]]) {
+  for (const [vp, path] of [["desktop", "/docs/"], ["mobile", "/sets/ember-aurora/"], ["mobile", "/docs/"]]) {
     const x = await open(vp, path);
     await sleep(1200);
     await x.page.screenshot({ path: `${SHOTS}/${path.replace(/\//g, "_")}${vp}.png`, fullPage: true });

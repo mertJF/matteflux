@@ -6,8 +6,8 @@ import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { config } from "./src/config.mjs";
 import { layout } from "./src/components.mjs";
-import { home, setsIndex, setDetail, pricing } from "./src/pages/marketing.mjs";
-import { docs, license, faqPage, legal, notFound } from "./src/pages/content.mjs";
+import { home, setsIndex, setDetail } from "./src/pages/marketing.mjs";
+import { docs, faqPage, notFound } from "./src/pages/content.mjs";
 
 const DIST = "dist";
 const read = (p) => readFileSync(p, "utf8");
@@ -66,13 +66,8 @@ const pages = [
     description: `${s.desc} A matching hero and footer video background for websites, with desktop and mobile versions and ready-made code.`,
     body: setDetail({ ...ctx, set: s }),
   })),
-  { path: "/pricing/", title: "Pricing", heroSet: defaultSet, body: pricing(ctx) },
   { path: "/docs/", title: "Docs", description: "Set up a Matteflux hero or footer in HTML/CSS, Framer or Webflow. Overlay, performance and common mistakes.", body: docs(ctx) },
-  { path: "/license/", title: "License", body: license(ctx) },
   { path: "/faq/", title: "Questions", body: faqPage(ctx) },
-  { path: "/terms/", title: "Terms of service", body: legal("terms", ctx), noindex: true },
-  { path: "/privacy/", title: "Privacy policy", body: legal("privacy", ctx), noindex: true },
-  { path: "/refunds/", title: "Refund policy", body: legal("refunds", ctx), noindex: true },
   { path: "/404.html", title: "Page not found", heroSet: defaultSet, body: notFound(ctx), noindex: true, file: "404.html" },
 ];
 
