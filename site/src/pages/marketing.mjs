@@ -43,7 +43,7 @@ export function home({ sets, faq, defaultSet: d }) {
     </div>
     <div class="wrap site-hero__bar">
       <a href="#try" class="now-playing"><span class="dot" aria-hidden="true"></span><span>Now playing: <span data-mf-name>${d.name}</span>. Change it below</span></a>
-      <span class="hide-sm">Procedurally crafted, not AI-generated</span>
+      <span class="hide-sm">Code-generated motion</span>
     </div>
   </section>
 
@@ -96,14 +96,14 @@ export function home({ sets, faq, defaultSet: d }) {
     <div class="wrap split">
       <div class="split__side">
         <p class="kicker">Why Matteflux</p>
-        <h2 class="h2">Procedurally crafted, not AI-generated.</h2>
-        <p class="lead">Every frame is rendered from math, not sampled from a model. That is what makes the loops are exact, the files stay small and nothing melts at the edges.</p>
+        <h2 class="h2">Code-generated motion.</h2>
+        <p class="lead">Every frame is rendered from wave fields and code. That is what makes the loops exact, the files small and the edges clean.</p>
       </div>
       <div class="split__main features">
         <div class="feature">${icons.loop}<h3>Seamless loops</h3><p>The last frame flows into the first by design. No jump, no crossfade.</p></div>
         <div class="feature">${icons.small}<h3>Small files</h3><p>Soft, slow motion compresses well. The Ember Aurora hero is 217 KB as WebM at 2560×1440.</p></div>
         <div class="feature">${icons.speed}<h3>Ready for page speed</h3><p>Instant poster images, lazy-loaded footers and reduced-motion support out of the box.</p></div>
-        <div class="feature">${icons.wave}<h3>No AI artifacts</h3><p>No flicker, no warping, no watermark. The same clean motion every loop.</p></div>
+        <div class="feature">${icons.wave}<h3>Clean edges</h3><p>No flicker, no warping, no watermark. The same clean motion every loop.</p></div>
         <div class="feature">${icons.contrast}<h3>Legibility measured</h3><p>Every set ships with overlay values measured for white text at 4.5:1 contrast.</p></div>
         <div class="feature">${icons.devices}<h3>Composed for each screen</h3><p>Desktop and mobile are rendered separately, never cropped from one another.</p></div>
       </div>

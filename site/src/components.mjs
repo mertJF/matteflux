@@ -175,7 +175,7 @@ export function siteFooter(set) {
         <div><p class="foot-h">Follow</p><a href="${s.x}">X</a><a href="${s.dribbble}">Dribbble</a><a href="${s.behance}">Behance</a></div>
       </nav>
     </div>
-    <div class="site-footer__bottom"><span>© ${new Date().getFullYear()} Matteflux</span><span>Procedurally crafted, not AI-generated</span></div>
+    <div class="site-footer__bottom"><span>© ${new Date().getFullYear()} Matteflux</span><span>Code-generated motion</span></div>
   </div>
 </footer>`;
 }
