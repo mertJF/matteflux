@@ -179,6 +179,10 @@ CLAUDE.md     bu dosya
   taban hero %20, footer %25 (derleme sırasında hesaplanır).
 
 ## Açık işler
+- Site videoları: Set 1'in satılan final dosyaları (2560 px) şu an sitede
+  herkese açık sunuluyor. Site için 1280 px önizleme sürümleri
+  oluşturulmalı ve site bunları kullanmalı; 2560 px final dosyalar yalnızca
+  satın alınan pakette yer almalı. Faz 4'ten önce çözülecek.
 - Yer tutucular: fiyatlar, para birimi, 6 Polar linki, e-posta form adresi,
   iletişim e-postası, sosyal linkler, lisans + Terms/Privacy/Refund
   metinleri (hepsi `site/src/config.mjs` ve `src/pages/content.mjs`).
