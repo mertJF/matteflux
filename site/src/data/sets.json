@@ -1,0 +1,8 @@
+[
+  { "num": "01", "slug": "ember-aurora", "name": "Ember Aurora", "desc": "Amber light drifting over a teal dusk.", "tone": "Warm", "motion": "Aurora", "status": "released", "collection": "Dark Ambient" },
+  { "num": "02", "slug": "night-fog", "name": "Night Fog", "desc": "Slow, low-contrast haze rolling past.", "tone": "Neutral", "motion": "Fog", "status": "preview", "collection": "Dark Ambient" },
+  { "num": "03", "slug": "deep-water", "name": "Deep Water", "desc": "Caustic light on a dark water surface.", "tone": "Blue", "motion": "Water", "status": "preview", "collection": "Dark Ambient" },
+  { "num": "04", "slug": "drift", "name": "Drift", "desc": "Distant particles gliding across a quiet field.", "tone": "Neutral", "motion": "Particles", "status": "preview", "collection": "Dark Ambient" },
+  { "num": "05", "slug": "violet-tide", "name": "Violet Tide", "desc": "Fluid violet folding into midnight navy.", "tone": "Violet", "motion": "Fluid", "status": "preview", "collection": "Dark Ambient" },
+  { "num": "06", "slug": "contour", "name": "Contour", "desc": "Fine topographic lines in slow motion.", "tone": "Mono", "motion": "Lines", "status": "preview", "collection": "Dark Ambient" }
+]
