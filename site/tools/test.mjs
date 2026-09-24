@@ -197,10 +197,10 @@ console.log("\n[desktop] catalog and set page");
   await d.page.screenshot({ path: `${SHOTS}/set-ember-desktop.png`, fullPage: true });
   await d.ctx.close();
 
-  const n = await open("desktop", "/sets/contour/");
+  const n = await open("desktop", "/sets/nebula/");
   await sleep(2000);
   const hc = await heroState(n.page);
-  ok(hc && /contour-hero-desktop\.webm$/.test(hc.src) && !hc.paused, "set page (Contour) plays");
+  ok(hc && /nebula-hero-desktop\.webm$/.test(hc.src) && !hc.paused, "set page (Nebula) plays");
   ok(await n.page.isVisible("text=Free"), "released set shows Free label");
   await n.ctx.close();
 

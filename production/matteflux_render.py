@@ -179,25 +179,25 @@ def violet_tide(w, h, kind, p):
     return ramp(v, ["#07071A", "#141236", "#2A1F63", "#5B3FA6", "#B895E6"])
 
 
-def contour(w, h, kind, p):
-    """Set 06 — fine topographic lines in slow motion."""
+def nebula(w, h, kind, p):
+    """Set 06 — warm and cool gas clouds drifting through deep space."""
     x, y, asp = coords(w, h)
     portrait = asp < 1
-    wx, wy = warp(x, y, p, 0.10)
-    f = (np.sin(TAU * (0.7 * wx + 0.2 * wy) + p)
-         + 0.8 * np.sin(TAU * (0.5 * wy - 0.4 * wx) - p + 1.0)
-         + 0.4 * np.sin(TAU * (1.3 * wx + 1.1 * wy) + 2 * p))
-    bands = 7
-    fr = (f * bands) % 1.0
-    d = np.minimum(fr, 1 - fr) / (np.abs(np.gradient(f * bands, axis=1)) + np.abs(np.gradient(f * bands, axis=0)) + 1e-4)
-    line = np.clip(1.2 - d, 0, 1)
-    fade = vignette(x, y, asp, 0.75)
+    wx, wy = warp(x, y, p, 0.22)
+    wx2, wy2 = warp(wx * 0.7, wy * 0.7, -p, 0.16, (2, 1))
+    v1 = 0.5 + 0.5 * np.sin(TAU * (0.5 * wx2 + 0.8 * wy2) + p)
+    v1 = v1 + 0.3 * np.sin(TAU * (1.2 * wx - 0.3 * wy) + 2 * p)
+    v1 = np.clip(v1 / 1.3, 0, 1) ** 1.6
+    v2 = 0.5 + 0.5 * np.sin(TAU * (0.7 * wx - 0.5 * wy) - p + 1.0)
+    v2 = v2 + 0.25 * np.sin(TAU * (0.9 * wx2 + 1.0 * wy) + p + 0.5)
+    v2 = np.clip(v2 / 1.25, 0, 1) ** 1.8
+    fade = vignette(x, y, asp, 0.5)
     if kind == "hero":
-        cy = 0.60 if portrait else 0.56
-        fade *= 1 - 0.55 * np.exp(-(((x - asp / 2) / (0.42 * asp)) ** 2 + ((y - cy) / 0.2) ** 2))
-    bg = ramp(0.2 + 0.15 * (0.5 + 0.5 * f / 2.2), ["#0A0B0B", "#121414", "#1B1F1E"])
-    rgb = bg + line[..., None] * fade[..., None] * hexrgb("#C9C2B0") * 0.42
-    return np.clip(rgb, 0, 1)
+        cy = 0.60 if portrait else 0.58
+        fade *= 1 - 0.3 * np.exp(-(((x - asp / 2) / (0.45 * asp)) ** 2 + ((y - cy) / 0.22) ** 2))
+    c1 = ramp(v1 * fade, ["#06060A", "#1A0C14", "#3A1828", "#6B2838", "#B85848"])
+    c2 = ramp(v2 * fade, ["#06060A", "#0C0C1A", "#181838", "#283868", "#4868A0"])
+    return np.clip(c1 + c2 * 0.6, 0, 1)
 
 
 SETS = {
@@ -206,7 +206,7 @@ SETS = {
     "03": {"slug": "deep-water", "title": "Deep Water", "fn": deep_water},
     "04": {"slug": "drift", "title": "Drift", "fn": drift},
     "05": {"slug": "violet-tide", "title": "Violet Tide", "fn": violet_tide},
-    "06": {"slug": "contour", "title": "Contour", "fn": contour},
+    "06": {"slug": "nebula", "title": "Nebula", "fn": nebula},
 }
 
 

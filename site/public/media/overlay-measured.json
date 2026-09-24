@@ -109,26 +109,26 @@
       "webm": 127169
     }
   },
-  "contour": {
+  "nebula": {
     "hero-desktop": {
       "overlay": 0.0,
-      "mp4": 3992398,
-      "webm": 2260035
+      "mp4": 1596229,
+      "webm": 325964
     },
     "hero-mobile": {
       "overlay": 0.0,
-      "mp4": 1885756,
-      "webm": 1113125
+      "mp4": 782559,
+      "webm": 168962
     },
     "footer-desktop": {
       "overlay": 0.0,
-      "mp4": 3741970,
-      "webm": 2526027
+      "mp4": 1236603,
+      "webm": 303013
     },
     "footer-mobile": {
       "overlay": 0.0,
-      "mp4": 1860291,
-      "webm": 1199466
+      "mp4": 685492,
+      "webm": 157499
     }
   }
 }

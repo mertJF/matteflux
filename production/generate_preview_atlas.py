@@ -149,23 +149,25 @@ def s5_violet(w, h, kind, p):
     rgb = ramp(v, ["#07071A", "#141236", "#2A1F63", "#5B3FA6", "#B895E6"])
     return upscale(rgb, w, h, 7)
 
-def s6_contour(w, h, kind, p):
-    x, y, lw, lh, asp = grid(w, h, 1.5)
-    wx, wy = warp(x, y, p, 0.10)
-    f = (np.sin(TAU * (0.7 * wx + 0.2 * wy) + p) + 0.8 * np.sin(TAU * (0.5 * wy - 0.4 * wx) - p + 1.0)
-         + 0.4 * np.sin(TAU * (1.3 * wx + 1.1 * wy) + 2 * p))
-    bands = 7
-    fr = (f * bands) % 1.0
-    d = np.minimum(fr, 1 - fr) / (np.abs(np.gradient(f * bands, axis=1)) + np.abs(np.gradient(f * bands, axis=0)) + 1e-4)
-    line = np.clip(1.2 - d, 0, 1)
-    fade = vignette(x, y, asp, 0.75)
+def s6_nebula(w, h, kind, p):
+    x, y, lw, lh, asp = grid(w, h, 6)
+    wx, wy = warp(x, y, p, 0.22)
+    wx2, wy2 = warp(wx * 0.7, wy * 0.7, -p, 0.16, (2, 1))
+    v1 = 0.5 + 0.5 * np.sin(TAU * (0.5 * wx2 + 0.8 * wy2) + p)
+    v1 = v1 + 0.3 * np.sin(TAU * (1.2 * wx - 0.3 * wy) + 2 * p)
+    v1 = np.clip(v1 / 1.3, 0, 1) ** 1.6
+    v2 = 0.5 + 0.5 * np.sin(TAU * (0.7 * wx - 0.5 * wy) - p + 1.0)
+    v2 = v2 + 0.25 * np.sin(TAU * (0.9 * wx2 + 1.0 * wy) + p + 0.5)
+    v2 = np.clip(v2 / 1.25, 0, 1) ** 1.8
+    fade = vignette(x, y, asp, 0.5)
     if kind == "hero":
-        fade *= 1 - 0.55 * np.exp(-(((x - asp / 2) / (0.42 * asp)) ** 2 + ((y - 0.56) / 0.2) ** 2))
-    bg = ramp(0.2 + 0.15 * (0.5 + 0.5 * f / 2.2), ["#0A0B0B", "#121414", "#1B1F1E"])
-    rgb = bg + line[..., None] * fade[..., None] * hexrgb("#C9C2B0") * 0.42
-    return upscale(rgb, w, h, 0.6)
+        fade *= 1 - 0.3 * np.exp(-(((x - asp / 2) / (0.45 * asp)) ** 2 + ((y - 0.58) / 0.22) ** 2))
+    c1 = ramp(v1 * fade, ["#06060A", "#1A0C14", "#3A1828", "#6B2838", "#B85848"])
+    c2 = ramp(v2 * fade, ["#06060A", "#0C0C1A", "#181838", "#283868", "#4868A0"])
+    rgb = np.clip(c1 + c2 * 0.6, 0, 1)
+    return upscale(rgb, w, h, 7)
 
-SETS = {1: s1_aurora, 2: s2_fog, 3: s3_water, 4: s4_particles, 5: s5_violet, 6: s6_contour}
+SETS = {1: s1_aurora, 2: s2_fog, 3: s3_water, 4: s4_particles, 5: s5_violet, 6: s6_nebula}
 
 def render(set_id, out):
     fn = SETS[set_id]
