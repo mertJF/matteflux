@@ -32,7 +32,7 @@ FORMATS = {
 }
 # Rendering happens at 1/COMPUTE_DIV and is upscaled: the fields are soft,
 # so this loses nothing and keeps render time low.
-COMPUTE_DIV = 4
+COMPUTE_DIV = 2
 
 
 # ------------------------------------------------------------------ helpers
