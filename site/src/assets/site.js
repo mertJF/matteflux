@@ -192,6 +192,22 @@
     });
   });
 
+  // ------------------------------------------------- hero parallax
+  var siteHero = $(".site-hero");
+  if (siteHero && !reduceMotion) {
+    var ticking = false;
+    function heroParallax() {
+      var h = siteHero.offsetHeight;
+      var progress = Math.max(0, Math.min(1, window.scrollY / (h * 0.7)));
+      siteHero.style.transform = "scale(" + (1 - progress * 0.06) + ")";
+      siteHero.style.opacity = 1 - progress * 0.85;
+      ticking = false;
+    }
+    window.addEventListener("scroll", function () {
+      if (!ticking) { requestAnimationFrame(heroParallax); ticking = true; }
+    }, { passive: true });
+  }
+
   // ------------------------------------------------- card previews
   $$(".set-card").forEach(function (card) {
     var link = $(".set-card__link", card);

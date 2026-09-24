@@ -74,7 +74,7 @@ ul, ol { margin: 0; padding: 0; }
 .split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(40px, 5vw, 72px); align-items: start; }
 .split__side > * + * { margin-top: 20px; }
 .split--detail { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); }
-.sticky { position: sticky; top: 32px; }
+.sticky { position: sticky; top: 100px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .grid-cards { gap: 48px 24px; }
 @media (max-width: 1080px) {
@@ -115,7 +115,8 @@ ul, ol { margin: 0; padding: 0; }
 
 /* ---------------------------------------------------------- header */
 .site-header { position: relative; z-index: 20; border-bottom: 1px solid var(--line); }
-.site-header--overlay { position: absolute; inset: 0 0 auto 0; border-bottom: 0; padding-top: env(safe-area-inset-top, 0px); }
+.site-header--overlay { position: fixed; inset: 0 0 auto 0; border-bottom: 0; padding-top: env(safe-area-inset-top, 0px); }
+.site-header--overlay::after { content: ""; position: absolute; inset: 0; height: 180px; background: linear-gradient(var(--bg), transparent); pointer-events: none; z-index: -1; }
 .site-header__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 88px; }
 .wordmark { font-family: var(--serif); font-size: 30px; line-height: 1; letter-spacing: -0.01em; text-decoration: none; color: var(--text); }
 .wordmark--lg { font-size: clamp(44px, 5vw, 64px); }
@@ -135,7 +136,8 @@ ul, ol { margin: 0; padding: 0; }
 }
 
 /* ------------------------------------------------------------ heroes */
-.site-hero { display: flex; flex-direction: column; justify-content: center; min-height: max(640px, 100svh); }
+.site-hero { display: flex; flex-direction: column; justify-content: center; min-height: max(640px, 100svh); position: sticky; top: 0; z-index: 0; will-change: transform, opacity; }
+.site-hero ~ * { position: relative; z-index: 1; background: var(--bg); }
 .site-hero__inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 26px; padding-block: 140px 120px; }
 .site-hero__inner .display { margin-inline: auto; }
 .lead--hero { color: var(--text-on-media); margin-inline: auto; max-width: 36em; }

@@ -4,5 +4,5 @@
   { "num": "03", "slug": "deep-water", "name": "Deep Water", "desc": "Caustic light on a dark water surface.", "tone": "Blue", "motion": "Water", "status": "released", "collection": "Dark Ambient" },
   { "num": "04", "slug": "drift", "name": "Drift", "desc": "Distant particles gliding across a quiet field.", "tone": "Neutral", "motion": "Particles", "status": "released", "collection": "Dark Ambient" },
   { "num": "05", "slug": "violet-tide", "name": "Violet Tide", "desc": "Fluid violet folding into midnight navy.", "tone": "Violet", "motion": "Fluid", "status": "released", "collection": "Dark Ambient" },
-  { "num": "06", "slug": "contour", "name": "Contour", "desc": "Fine topographic lines in slow motion.", "tone": "Mono", "motion": "Lines", "status": "released", "collection": "Dark Ambient" }
+  { "num": "06", "slug": "nebula", "name": "Nebula", "desc": "Warm and cool gas clouds drifting through deep space.", "tone": "Rose", "motion": "Cloud", "status": "released", "collection": "Dark Ambient" }
 ]

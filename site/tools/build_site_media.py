@@ -13,7 +13,7 @@ import numpy as np
 BUILD, OUT = sys.argv[1:3]
 SETS = [
     ("01", "ember-aurora"), ("02", "night-fog"), ("03", "deep-water"),
-    ("04", "drift"), ("05", "violet-tide"), ("06", "contour"),
+    ("04", "drift"), ("05", "violet-tide"), ("06", "nebula"),
 ]
 FORMATS = ["hero-desktop", "hero-mobile", "footer-desktop", "footer-mobile"]
 ZONES = {
