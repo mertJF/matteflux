@@ -2,12 +2,13 @@
 
 ## 1. PROJE ÖZETİ
 Matteflux (matteflux.com), web siteleri için video arka planlı, kullanıma
-hazır HERO ve FOOTER bileşenleri satan bağımsız (indie) bir marka.
-Satılan şey stok video değil; web tasarımcısının birkaç dakikada sitesine
-koyabileceği, videosu gömülü, tasarımı ve kodu hazır bileşenler.
+hazır HERO ve FOOTER bileşenleri sunan bağımsız (indie) bir açık kaynak proje.
+Tüm setler ücretsiz; karşılığında GitHub repo'ya star isteniyor.
+Web tasarımcısının birkaç dakikada sitesine koyabileceği, videosu gömülü,
+tasarımı ve kodu hazır bileşenler.
 Temel fikir EŞLEŞEN SETLER: her set aynı görsel aileden bir hero ve bir
 footer içerir. Hero daha belirgin (sayfanın ilk izlenimi), footer daha sakin
-(sayfanın kapanışı). Set olarak veya tek tek satılabilir.
+(sayfanın kapanışı).
 Slogan önerisi: "Ambient motion for heroes & footers." (kesinleşmedi)
 
 Hedef kitle: web tasarımcıları, freelancer'lar, küçük ajanslar, Framer ve
@@ -29,7 +30,7 @@ kullanır: hero'da da footer'da da Matteflux videoları oynar.
 
 ### 3.1 Ana sayfa (yukarıdan aşağıya)
 1. HERO: Tam ekran Matteflux hero videosu. Üstünde büyük başlık, kısa bir
-   alt başlık ve iki buton: "Browse sets" ve "Get a free set".
+   alt başlık ve iki buton: "Browse sets" ve "Star on GitHub".
 2. CANLI SET DEĞİŞTİRİCİ (ana "wow" anı): Ziyaretçi küçük set
    önizlemelerine tıkladıkça sayfanın hero'su VE footer'ı birlikte o sete
    geçer. Masaüstü/mobil görünüm anahtarı ve overlay (karartma) kaydırıcısı
@@ -43,11 +44,11 @@ kullanır: hero'da da footer'da da Matteflux videoları oynar.
    overlay değerleri; masaüstü ve mobil için ayrı kompozisyonlar.
 6. PLATFORMLAR: HTML/CSS, Framer, Webflow logoları/ifadeleriyle "works
    with" bölümü.
-7. FİYATLANDIRMA özeti (bkz. 3.3).
-8. ÜCRETSİZ SET: E-posta karşılığında 1 set. Kısa form.
-9. SSS (FAQ).
-10. FOOTER: Kendisi bir Matteflux footer'ı. Linkler: Sets, Pricing, Docs,
-    License, FAQ, iletişim, sosyal medya, yasal sayfalar.
+7. GITHUB CTA: "Star the repo, download all sets" — GitHub repo'ya
+   yönlendiren belirgin bir bölüm.
+8. SSS (FAQ).
+9. FOOTER: Kendisi bir Matteflux footer'ı. Linkler: Sets, Docs, FAQ,
+   GitHub, iletişim, sosyal medya.
 
 ### 3.2 Diğer sayfalar
 - /sets: Katalog. Filtre: renk tonu, hareket tipi, hero/footer.
@@ -57,26 +58,15 @@ kullanır: hero'da da footer'da da Matteflux videoları oynar.
   - Teknik bilgiler: formatlar, çözünürlükler, dosya boyutları, süre
   - Paket içeriği listesi
   - Kurulum kodundan kısa bir önizleme
-  - Fiyat ve satın alma butonu (Polar checkout)
-- /pricing: Paketler ve lisans karşılaştırması.
+  - İndirme / GitHub star CTA
 - /docs: Kurulum rehberleri (HTML/CSS, Framer, Webflow), performans
   ipuçları, overlay ayarı, sık yapılan hatalar.
-- /license: Lisans şartları, sade İngilizceyle.
 - /faq
-- Yasal: Terms, Privacy, Refund policy.
 
-### 3.3 Fiyatlandırma ve lisans (yapı; rakamlar araştırılıp test edilecek)
-- Tek set (hero + footer): [FİYAT]
-- Paket (ör. 6 set): [FİYAT]
-- All-access (tüm setler + gelecek setler): [FİYAT]
-Lisans seviyeleri:
-- Personal / Single project: tek bir site
-- Commercial / Unlimited: sınırsız proje, müşteri işleri dahil
-Rakip ürünlerin fiyatları araştırılarak başlangıç fiyatları belirlenecek.
-
-### 3.4 Satın alma akışı
-Ziyaretçi "Buy" → Polar.sh checkout → ödeme → e-posta ile indirme linki
-ve lisans. Satın alınan setlerin güncellemeleri ücretsiz.
+### 3.3 İndirme akışı
+Tüm setler ücretsiz. Ziyaretçi GitHub repo'ya star verip setleri doğrudan
+indirir. Doğrulama mekanizması yok, güvene dayalı. İndirme linkleri
+GitHub releases veya repo içindeki dosyalardan.
 
 ## 4. ÜRÜN — BİR SETİN İÇERİĞİ
 İndirme paketi (ZIP) klasör yapısı:
@@ -122,24 +112,20 @@ uygulanır. Örnek renk rampası: #0A0B0E → #0E181E → #163A40 → #966034 �
 - Hızlı, statik bir site (düz HTML/CSS/JS veya Astro).
 - Ücretsiz katmanı olan bir statik hosting (Cloudflare Pages, Netlify vb.)
 - Videolar bir CDN üzerinden, sayfa hızı öncelikli.
-- Ödeme: Polar.sh (Türkiye destekli, Türk bankasına TL ödeme).
-  Stripe, PayPal, Gumroad, Lemon Squeezy, Paddle kullanılmayacak.
-- E-posta listesi: ücretsiz set formu için basit bir e-posta servisi.
+- İndirme: GitHub releases veya repo içinden doğrudan.
 
-## 7.1 SATIŞ VE PAZARLAMA
-- Ana kanal: matteflux.com (Polar). Yan kanal: Envato vb. pazar yerleri
-  (ödeme Payoneer ile), yükle-unut.
+## 7.1 PAZARLAMA
 - Trafik: Dribbble/Behance/X'te ekran kayıtları, Framer ve Webflow
-  toplulukları, Reddit web tasarım toplulukları, ücretsiz set ile e-posta
-  listesi, hazır olunca Product Hunt lansmanı.
-- Bireysel satıcı, şirket yok.
+  toplulukları, Reddit web tasarım toplulukları, GitHub trending,
+  Product Hunt lansmanı.
+- GitHub star'lar sosyal kanıt ve keşfedilebilirlik sağlar.
 
 ## 8. ÇALIŞMA SIRASI
 Faz 1 — Deneyim tasarımı ✅
 Faz 2 — Üretim: Set 1 ✅. Set 2–6 lansman öncesi üretilecek (bkz. durum).
 Faz 3 — Site ✅
-Faz 4 — Satış altyapısı: Polar ürünleri, lisans metni, yasal sayfalar,
-  ücretsiz set akışı.  ← SIRADAKİ
+Faz 4 — Lansman hazırlığı: GitHub repo düzeni, indirme akışı, site
+  güncellemeleri (ücretli içerik kaldırma, star CTA ekleme).  ← SIRADAKİ
 Faz 5 — Lansman: Tanıtım içerikleri, topluluk paylaşımları, Product Hunt.
 
 ---
@@ -179,17 +165,15 @@ CLAUDE.md     bu dosya
   taban hero %20, footer %25 (derleme sırasında hesaplanır).
 
 ## Açık işler
-- Site videoları: Set 1'in satılan final dosyaları (2560 px) şu an sitede
-  herkese açık sunuluyor. Site için 1280 px önizleme sürümleri
-  oluşturulmalı ve site bunları kullanmalı; 2560 px final dosyalar yalnızca
-  satın alınan pakette yer almalı. Faz 4'ten önce çözülecek.
-- Yer tutucular: fiyatlar, para birimi, 6 Polar linki, e-posta form adresi,
-  iletişim e-postası, sosyal linkler, lisans + Terms/Privacy/Refund
-  metinleri (hepsi `site/src/config.mjs` ve `src/pages/content.mjs`).
+- Site güncellemesi: fiyatlandırma, Polar checkout, lisans sayfaları gibi
+  ücretli modele ait öğeleri siteden kaldır; "Star on GitHub" CTA'sı ekle;
+  indirme akışını GitHub'a yönlendir.
+- Yer tutucular: iletişim e-postası, sosyal linkler
+  (`site/src/config.mjs` ve `src/pages/content.mjs`).
 - Lansman öncesi: Set 2–6 final render; fontları self-host et (Google
   Fonts yerine); iPhone Safari'de ve MP4 yolunda gerçek cihaz testi
   (test tarayıcısı Chromium, H.264 oynatmıyor).
-- Ücretsiz set hangisi olacak: karar verilmedi.
+- GitHub repo düzeni: README, releases veya indirme yapısı, lisans dosyası.
 - Videolar büyüyünce `config.mjs` → `mediaBase` ile R2/CDN'e taşı.
 
 ## Dikkat

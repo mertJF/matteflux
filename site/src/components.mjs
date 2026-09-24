@@ -21,6 +21,7 @@ export const icons = {
   close: icon('<path d="M6 6l12 12M18 6L6 18"/>', 22),
   check: icon('<path d="M5 12l4 4 10-10"/>', 18),
   arrow: icon('<path d="M5 12h14M13 6l6 6-6 6"/>', 18),
+  github: icon('<path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.66-.22.66-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.16.58.67.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/>', 18),
 };
 
 // ------------------------------------------------------- video background
@@ -125,7 +126,7 @@ export function setCard(set, { headingLevel = 3 } = {}) {
     </div>
     <div class="set-card__meta">
       <${raw(h)} class="set-card__name"><span class="set-card__num mono">${set.num}</span> ${set.name}</${raw(h)}>
-      <span class="set-card__price">${set.status === "released" ? config.prices.single : "Coming soon"}</span>
+      ${set.status === "released" ? html`<span class="set-card__price">Free</span>` : html`<span class="set-card__price">Coming soon</span>`}
     </div>
     <p class="set-card__desc">${set.desc}</p>
     <p class="set-card__tags"><span class="tag">${set.tone}</span><span class="tag">${set.motion}</span>${set.status === "preview" ? html`<span class="tag tag--soft">Preview</span>` : ""}</p>
@@ -142,7 +143,7 @@ export function codeBlock(file, lang, text) {
 
 // ------------------------------------------------------------- page chrome
 const NAV = [
-  ["Sets", "/sets/"], ["Pricing", "/pricing/"], ["Docs", "/docs/"], ["License", "/license/"], ["FAQ", "/faq/"],
+  ["Sets", "/sets/"], ["Docs", "/docs/"], ["FAQ", "/faq/"],
 ];
 
 export function header({ overlay, current }) {
@@ -152,7 +153,7 @@ export function header({ overlay, current }) {
     <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span class="nav-toggle__open">${icons.menu}</span><span class="nav-toggle__close">${icons.close}</span></button>
     <nav id="site-nav" class="site-nav" aria-label="Main">
       ${NAV.map(([label, href]) => html`<a href="${href}" ${raw(current === href ? 'aria-current="page"' : "")}>${label}</a>`)}
-      <a class="btn btn--ghost btn--sm" href="/#free">Get a free set</a>
+      <a class="btn btn--ghost btn--sm" href="${config.githubRepo}" target="_blank" rel="noopener">${icons.github} Star on GitHub</a>
     </nav>
   </div>
 </header>`;
@@ -169,10 +170,9 @@ export function siteFooter(set) {
         <p>Ambient motion for heroes &amp; footers. This footer is <a href="/sets/${set.slug}/" data-mf-link><span data-mf-name>${set.name}</span></a>, a Matteflux set.</p>
       </div>
       <nav class="site-footer__nav" aria-label="Footer">
-        <div><p class="foot-h">Product</p><a href="/sets/">Sets</a><a href="/pricing/">Pricing</a><a href="/docs/">Docs</a><a href="/license/">License</a></div>
+        <div><p class="foot-h">Product</p><a href="/sets/">Sets</a><a href="/docs/">Docs</a><a href="${config.githubRepo}" target="_blank" rel="noopener">GitHub</a></div>
         <div><p class="foot-h">Help</p><a href="/faq/">FAQ</a><a href="mailto:${config.contactEmail}">Contact</a></div>
         <div><p class="foot-h">Follow</p><a href="${s.x}">X</a><a href="${s.dribbble}">Dribbble</a><a href="${s.behance}">Behance</a></div>
-        <div><p class="foot-h">Legal</p><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a><a href="/refunds/">Refund policy</a></div>
       </nav>
     </div>
     <div class="site-footer__bottom"><span>© ${new Date().getFullYear()} Matteflux</span><span>Procedurally crafted, not AI-generated</span></div>

@@ -13,16 +13,8 @@ export const config = {
   // Set shown in the hero and footer on first load.
   defaultSet: "ember-aurora",
 
-  // Polar checkout links, one per product and license (Phase 4).
-  checkout: {
-    single: { personal: "[POLAR_URL_SINGLE_PERSONAL]", commercial: "[POLAR_URL_SINGLE_COMMERCIAL]" },
-    collection: { personal: "[POLAR_URL_COLLECTION_PERSONAL]", commercial: "[POLAR_URL_COLLECTION_COMMERCIAL]" },
-    allAccess: { personal: "[POLAR_URL_ALLACCESS_PERSONAL]", commercial: "[POLAR_URL_ALLACCESS_COMMERCIAL]" },
-  },
-  prices: { single: "[PRICE]", collection: "[PRICE]", allAccess: "[PRICE]", currencyNote: "[CURRENCY]" },
-
-  // Free-set signup form endpoint (Phase 4).
-  emailFormAction: "[EMAIL_FORM_ACTION]",
+  // GitHub repo — used for star CTA and download links.
+  githubRepo: "https://github.com/mertJF/matteflux",
 
   contactEmail: "[CONTACT_EMAIL]",
   social: { x: "[X_URL]", dribbble: "[DRIBBBLE_URL]", behance: "[BEHANCE_URL]" },

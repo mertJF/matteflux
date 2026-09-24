@@ -249,39 +249,4 @@
     });
   }
 
-  // ------------------------------------------------ license toggles
-  $$("[data-license-scope]").forEach(function (scope) {
-    $$("[data-license]", scope).forEach(function (b) {
-      b.addEventListener("click", function () {
-        var lic = b.getAttribute("data-license");
-        $$("[data-license]", scope).forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-        $$("[data-href-" + lic + "]", scope).forEach(function (a) { a.href = a.getAttribute("data-href-" + lic); });
-        $$("[data-license-text]", scope).forEach(function (t) {
-          t.textContent = lic === "personal" ? "Personal license · one website" : "Commercial license · unlimited projects, client work included";
-        });
-      });
-    });
-  });
-
-  // ---------------------------------------------------- free-set form
-  $$("[data-free-form]").forEach(function (form) {
-    var status = $("[data-free-status]", form);
-    var input = $("input[type=email]", form);
-    form.addEventListener("submit", function (e) {
-      status.classList.remove("is-error");
-      if (!input.value || !input.checkValidity()) {
-        e.preventDefault();
-        status.textContent = "Enter an email address like you@studio.com.";
-        status.classList.add("is-error");
-        input.focus();
-        return;
-      }
-      if (form.getAttribute("action").indexOf("[") === 0) {
-        // Not connected to an email service yet (Phase 4).
-        e.preventDefault();
-        status.textContent = "Signup isn’t connected yet. Please check back soon.";
-        status.classList.add("is-error");
-      }
-    });
-  });
 })();

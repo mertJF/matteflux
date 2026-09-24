@@ -7,61 +7,11 @@ import {
 const pct = (v) => `${Math.round(v * 100)}%`;
 
 // ---------------------------------------------------------------- shared
-export function pricingCards() {
-  const c = config.checkout;
-  const p = config.prices;
-  const tier = (name, sub, price, items, links, featured, cta) => html`<article class="price-card ${featured ? "price-card--featured" : ""}">
-    <header class="price-card__head">
-      <div><h3>${name}</h3><p class="muted small">${sub}</p></div>
-      ${featured ? html`<span class="badge">Best value</span>` : ""}
-    </header>
-    <p class="price-card__price">${price}</p>
-    <p class="faint small" data-license-text>Personal license · one website</p>
-    <ul class="checks">${items.map((i) => html`<li>${icons.check}<span>${i}</span></li>`)}</ul>
-    <a class="btn ${featured ? "btn--solid" : "btn--ghost"} btn--block" href="${links.personal}" data-href-personal="${links.personal}" data-href-commercial="${links.commercial}">${cta}</a>
-  </article>`;
-  return html`<div class="pricing" data-license-scope>
-  <div class="pricing__bar">
-    <div class="seg" role="group" aria-label="License">
-      <button type="button" class="seg__btn" data-license="personal" aria-pressed="true">Personal · 1 site</button>
-      <button type="button" class="seg__btn" data-license="commercial" aria-pressed="false">Commercial · unlimited</button>
-    </div>
-  </div>
-  <div class="grid-3">
-    ${tier("Single set", "One hero + footer pair", p.single, ["Hero + footer, desktop + mobile", "MP4 + WebM, posters, code", "Free updates to this set"], c.single, false, "Choose a set")}
-    ${tier("Collection", "All 6 Dark Ambient sets", p.collection, ["6 hero + footer pairs", "Everything in Single set", "Free updates to the collection"], c.collection, true, "Buy the collection")}
-    ${tier("All-access", "Every set, now and later", p.allAccess, ["All current collections", "Every future set included", "New releases as they ship"], c.allAccess, false, "Get all-access")}
-  </div>
-  <p class="pricing__note faint small">Secure checkout by Polar. Prices in ${p.currencyNote}. The download link and license arrive by email.</p>
-</div>`;
-}
-
 function faqList(items) {
   return html`<div class="faq">${items.map((f) => html`<details class="faq__item">
     <summary><span>${f.q}</span><span class="faq__icon" aria-hidden="true"></span></summary>
     <p>${f.a}</p>
   </details>`)}</div>`;
-}
-
-function freeSetForm() {
-  return html`<section id="free" class="section">
-  <div class="wrap">
-    <div class="free">
-      <div class="free__copy">
-        <h2 class="h2">Start with a free set.</h2>
-        <p class="lead">A complete hero and footer pair, with the same files and code as the paid sets. Free for personal projects.</p>
-      </div>
-      <form class="free__form" action="${config.emailFormAction}" method="post" data-free-form novalidate>
-        <label for="free-email">Email address</label>
-        <div class="free__row">
-          <input id="free-email" name="email" type="email" autocomplete="email" placeholder="you@studio.com" required>
-          <button type="submit" class="btn btn--solid">Send me the set</button>
-        </div>
-        <p class="faint small" data-free-status role="status">One email with the download link, then occasional new-set news. Unsubscribe anytime.</p>
-      </form>
-    </div>
-  </div>
-</section>`;
 }
 
 const SNIPPET = (slug) => `<section class="mf-section mf-section--hero">
@@ -88,7 +38,7 @@ export function home({ sets, faq, defaultSet: d }) {
       <p class="lead lead--hero">Matching video backgrounds for the top and the bottom of your site. Design, code and seamless loops included. Paste one in and it plays in minutes.</p>
       <div class="actions">
         <a class="btn btn--solid" href="#sets-gallery">Browse sets</a>
-        <a class="btn btn--ghost" href="#free">Get a free set</a>
+        <a class="btn btn--ghost" href="${config.githubRepo}" target="_blank" rel="noopener">${icons.github} Star on GitHub</a>
       </div>
     </div>
     <div class="wrap site-hero__bar">
@@ -124,7 +74,7 @@ export function home({ sets, faq, defaultSet: d }) {
         <a class="link-arrow" href="/docs/">Read the setup guides ${icons.arrow}</a>
       </div>
       <ol class="steps">
-        <li><span class="steps__n">1</span><h3>Pick a set</h3><p>Choose a hero and footer pair that fits your site’s mood. Preview both on desktop and mobile before you buy.</p></li>
+        <li><span class="steps__n">1</span><h3>Pick a set</h3><p>Choose a hero and footer pair that fits your site's mood. Preview both on desktop and mobile right here.</p></li>
         <li><span class="steps__n">2</span><h3>Download</h3><p>One ZIP: desktop and mobile videos in MP4 and WebM, poster images, ready-made code and a README with overlay values.</p></li>
         <li><span class="steps__n">3</span><h3>Paste the code</h3><p>Drop the snippet into HTML, Framer or Webflow. Poster first, lazy loading and reduced-motion support are already wired in.</p></li>
       </ol>
@@ -147,7 +97,7 @@ export function home({ sets, faq, defaultSet: d }) {
       <div class="split__side">
         <p class="kicker">Why Matteflux</p>
         <h2 class="h2">Procedurally crafted, not AI-generated.</h2>
-        <p class="lead">Every frame is rendered from math, not sampled from a model. That is why the loops are exact, the files stay small and nothing melts at the edges.</p>
+        <p class="lead">Every frame is rendered from math, not sampled from a model. That is what makes the loops are exact, the files stay small and nothing melts at the edges.</p>
       </div>
       <div class="split__main features">
         <div class="feature">${icons.loop}<h3>Seamless loops</h3><p>The last frame flows into the first by design. No jump, no crossfade.</p></div>
@@ -168,17 +118,20 @@ export function home({ sets, faq, defaultSet: d }) {
     </div>
   </section>
 
-  <section id="pricing" class="section section--line">
-    <div class="wrap stack-lg">
-      <div class="section-head">
-        <div><p class="kicker">Pricing</p><h2 class="h2">One payment. Yours to keep.</h2></div>
-        <a class="link-arrow" href="/pricing/">Compare licenses ${icons.arrow}</a>
+  <section id="github" class="section section--line">
+    <div class="wrap">
+      <div class="free">
+        <div class="free__copy">
+          <h2 class="h2">Free and open source.</h2>
+          <p class="lead">Every set is free to download. Star the repo on GitHub to help others find it.</p>
+        </div>
+        <div class="free__cta">
+          <a class="btn btn--solid btn--lg" href="${config.githubRepo}" target="_blank" rel="noopener">${icons.github} Star on GitHub</a>
+          <p class="faint small">All sets, all formats, all code — free for personal and commercial use.</p>
+        </div>
       </div>
-      ${pricingCards()}
     </div>
   </section>
-
-  ${freeSetForm()}
 
   <section class="section">
     <div class="wrap split">
@@ -241,7 +194,6 @@ export function setDetail({ set: s, sets }) {
     ["footer-desktop", "Footer · desktop", "2560 × 854", "3:1"],
     ["footer-mobile", "Footer · mobile", "1080 × 1350", "4:5"],
   ];
-  const c = config.checkout.single;
   return html`${header({ overlay: true, current: "/sets/" })}
 <main id="main">
   <section class="mf-section mf-section--hero page-hero page-hero--set" data-mf-slot="hero">
@@ -259,20 +211,16 @@ export function setDetail({ set: s, sets }) {
       <div class="split__main">
         ${previewFrame(s, { id: "pv-set", overlayHero: s.rec.hero, overlayFooter: s.rec.footer })}
       </div>
-      <aside class="split__side sticky buy" aria-label="Buy ${s.name}">
-        ${released ? html`<div class="buy__panel" data-license-scope>
-          <p class="buy__price">${config.prices.single}</p>
-          <p class="muted small">Hero + footer, desktop + mobile. One-time payment.</p>
-          <div class="seg seg--block" role="group" aria-label="License">
-            <button type="button" class="seg__btn" data-license="personal" aria-pressed="true">Personal · 1 site</button>
-            <button type="button" class="seg__btn" data-license="commercial" aria-pressed="false">Commercial · unlimited</button>
-          </div>
-          <a class="btn btn--solid btn--block" href="${c.personal}" data-href-personal="${c.personal}" data-href-commercial="${c.commercial}">Buy ${s.name}</a>
-          <p class="faint small">Secure checkout by Polar. Download link and license by email. Free updates.</p>
+      <aside class="split__side sticky buy" aria-label="Download ${s.name}">
+        ${released ? html`<div class="buy__panel">
+          <p class="buy__price">Free</p>
+          <p class="muted small">Hero + footer, desktop + mobile. MP4 + WebM, posters and code.</p>
+          <a class="btn btn--solid btn--block" href="${config.githubRepo}" target="_blank" rel="noopener">${icons.github} Download on GitHub</a>
+          <p class="faint small">Star the repo to help others find it.</p>
         </div>` : html`<div class="buy__panel">
           <p class="buy__price">Coming soon</p>
           <p class="muted small">This is an early preview. Final 2560 px renders, sizes and overlay values arrive with the release.</p>
-          <a class="btn btn--ghost btn--block" href="/#free">Get notified with the free set</a>
+          <a class="btn btn--ghost btn--block" href="${config.githubRepo}" target="_blank" rel="noopener">${icons.github} Star on GitHub</a>
         </div>`}
         ${previewControls(s, { target: "pv-set", page: true })}
       </aside>
@@ -310,7 +258,7 @@ export function setDetail({ set: s, sets }) {
           <li><strong>code/html-css/</strong> matteflux.css, matteflux.js, example.html</li>
           <li><strong>code/framer/</strong> MattefluxBackground.tsx</li>
           <li><strong>code/webflow/</strong> head code, footer code, hero and footer embeds</li>
-          <li><strong>README.md</strong> setup, overlay values, license summary</li>
+          <li><strong>README.md</strong> setup, overlay values</li>
         </ul>
         ${codeBlock("code/html-css/example.html (excerpt)", "HTML", SNIPPET(s.slug))}
       </div>
@@ -327,43 +275,4 @@ export function setDetail({ set: s, sets }) {
 ${siteFooter(s)}`;
 }
 
-// ------------------------------------------------------------ /pricing/
-export function pricing({ defaultSet: d, faq }) {
-  const row = (label, a, b) => html`<tr><th scope="row">${label}</th><td>${a}</td><td>${b}</td></tr>`;
-  return html`${header({ overlay: true, current: "/pricing/" })}
-<main id="main">
-  <section class="mf-section mf-section--hero page-hero" data-mf-slot="hero">
-    ${mfLayer(d, "hero", { overlay: d.rec.hero, eager: true })}
-    <div class="wrap page-hero__inner">
-      <h1 class="h1">Pricing</h1>
-      <p class="lead">One payment, no subscription. Pick a license for how many sites you’ll use it on.</p>
-    </div>
-  </section>
-  <section class="section section--line">
-    <div class="wrap stack-lg">${pricingCards()}</div>
-  </section>
-  <section class="section section--line">
-    <div class="wrap split">
-      <div class="split__side"><h2 class="h2">Licenses compared</h2><p class="muted">A summary. The <a href="/license/">full license</a> applies.</p></div>
-      <div class="split__main"><div class="table-wrap"><table class="table">
-        <thead><tr><th scope="col"></th><th scope="col">Personal</th><th scope="col">Commercial</th></tr></thead>
-        <tbody>
-          ${row("Websites", "1 website you own", "Unlimited")}
-          ${row("Client work", "No", "Yes")}
-          ${row("Free updates", "Yes", "Yes")}
-          ${row("Resell or share the video files on their own", "No", "No")}
-        </tbody>
-      </table></div></div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="wrap split">
-      <div class="split__side"><h2 class="h2">Questions</h2></div>
-      <div class="split__main">${faqList(faq.filter((f) => /license|client|refund|updates/i.test(f.q)))}</div>
-    </div>
-  </section>
-</main>
-${siteFooter(d)}`;
-}
-
-export { faqList, freeSetForm };
+export { faqList };
