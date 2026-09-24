@@ -4,7 +4,7 @@ export const config = {
   siteName: "Matteflux",
   tagline: "Ambient motion for heroes & footers.",
   description:
-    "Matching hero and footer video backgrounds for websites. Seamless loops, small files, ready-made code for HTML/CSS, Framer and Webflow. Procedurally crafted, not AI-generated.",
+    "Matching hero and footer video backgrounds for websites. Seamless loops, small files, ready-made code for HTML/CSS, Framer and Webflow. Code-generated motion.",
 
   // Where the videos live. Move them to a CDN or R2 bucket later by
   // changing this one line (no trailing slash).

@@ -106,7 +106,7 @@ uygulanır. Örnek renk rampası: #0A0B0E → #0E181E → #163A40 → #966034 �
 - Varsayılan tema koyu; videolar sahnenin yıldızı, arayüz geri planda.
 - Tipografi: zarif bir serif başlık fontu + sade bir sans gövde fontu.
 - "Flux" kelimesi yapay zekâ modeli Flux'ı çağrıştırabilir; sitede
-  "procedurally crafted, not AI-generated" mesajı net verilecek.
+  "code-generated motion" ifadesi kullanılıyor.
 
 ## 7. TEKNİK ALTYAPI
 - Hızlı, statik bir site (düz HTML/CSS/JS veya Astro).
