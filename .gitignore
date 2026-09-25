@@ -1,0 +1,16 @@
+# Build & render artifacts
+production/build/
+site/dist/
+site/.claude/
+.claude/
+
+# Node/Python
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
