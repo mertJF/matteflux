@@ -95,7 +95,7 @@ A matching hero and footer video background. Seamless {SECONDS}-second loops,
 separate compositions for desktop and mobile, ready-made code for
 HTML/CSS, Framer and Webflow.
 
-Version 1.0 · Procedurally rendered with code, not AI-generated.
+Code-generated motion · matteflux.com
 
 ---
 
@@ -184,17 +184,20 @@ Using dark text instead? Use a light overlay in your own CSS:
 
 ---
 
-## License summary
+## License
 
-This is a summary. The full terms at [LICENSE URL] apply.
+Free for personal and commercial use. You can use this set on unlimited
+websites, including client projects.
 
-- **Personal license:** use this set on one website you own.
-- **Commercial license:** unlimited websites, including client work.
-- You may not resell or redistribute the video files on their own, or as part
-  of a template, theme or asset pack.
-- Updates to this set are free.
+You may **not**:
+- Resell or redistribute the video files on their own
+- Include them in a template, theme, UI kit or asset pack for sale or free download
+- Claim authorship of the video files
 
-Questions: [SUPPORT EMAIL] · matteflux.com
+Attribution is not required but appreciated: a link to matteflux.com or a
+GitHub star helps others find the project.
+
+Questions: matteflux.com · github.com/mertJF/matteflux
 """
 open(os.path.join(root, "README.md"), "w").write(readme)
 
