@@ -2,7 +2,7 @@
   { "num": "01", "slug": "ember-aurora", "name": "Ember Aurora", "desc": "Amber light drifting over a teal dusk.", "tone": "Warm", "motion": "Aurora", "status": "released", "collection": "Dark Ambient" },
   { "num": "02", "slug": "night-fog", "name": "Night Fog", "desc": "Slow, low-contrast haze rolling past.", "tone": "Neutral", "motion": "Fog", "status": "released", "collection": "Dark Ambient" },
   { "num": "03", "slug": "deep-water", "name": "Deep Water", "desc": "Caustic light on a dark water surface.", "tone": "Blue", "motion": "Water", "status": "released", "collection": "Dark Ambient" },
-  { "num": "04", "slug": "drift", "name": "Drift", "desc": "Distant particles gliding across a quiet field.", "tone": "Neutral", "motion": "Particles", "status": "released", "collection": "Dark Ambient" },
+  { "num": "04", "slug": "silk", "name": "Silk", "desc": "Flowing fabric waves in warm bronze.", "tone": "Gold", "motion": "Wave", "status": "released", "collection": "Dark Ambient" },
   { "num": "05", "slug": "violet-tide", "name": "Violet Tide", "desc": "Fluid violet folding into midnight navy.", "tone": "Violet", "motion": "Fluid", "status": "released", "collection": "Dark Ambient" },
   { "num": "06", "slug": "nebula", "name": "Nebula", "desc": "Warm and cool gas clouds drifting through deep space.", "tone": "Rose", "motion": "Cloud", "status": "released", "collection": "Dark Ambient" }
 ]

@@ -65,28 +65,6 @@
       "webm": 320664
     }
   },
-  "drift": {
-    "hero-desktop": {
-      "overlay": 0.0,
-      "mp4": 807696,
-      "webm": 258175
-    },
-    "hero-mobile": {
-      "overlay": 0.0,
-      "mp4": 534823,
-      "webm": 223473
-    },
-    "footer-desktop": {
-      "overlay": 0.0,
-      "mp4": 596365,
-      "webm": 232871
-    },
-    "footer-mobile": {
-      "overlay": 0.0,
-      "mp4": 443026,
-      "webm": 212862
-    }
-  },
   "violet-tide": {
     "hero-desktop": {
       "overlay": 0.0,
@@ -129,6 +107,28 @@
       "overlay": 0.0,
       "mp4": 685492,
       "webm": 157499
+    }
+  },
+  "silk": {
+    "hero-desktop": {
+      "overlay": 0.0,
+      "mp4": 1110349,
+      "webm": 278024
+    },
+    "hero-mobile": {
+      "overlay": 0.0,
+      "mp4": 663760,
+      "webm": 171334
+    },
+    "footer-desktop": {
+      "overlay": 0.1,
+      "mp4": 725026,
+      "webm": 239142
+    },
+    "footer-mobile": {
+      "overlay": 0.15,
+      "mp4": 497588,
+      "webm": 153264
     }
   }
 }
