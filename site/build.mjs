@@ -7,7 +7,7 @@ import { dirname, join } from "node:path";
 import { config } from "./src/config.mjs";
 import { layout } from "./src/components.mjs";
 import { home, setsIndex, setDetail } from "./src/pages/marketing.mjs";
-import { docs, faqPage, notFound } from "./src/pages/content.mjs";
+import { docs, notFound } from "./src/pages/content.mjs";
 
 const DIST = "dist";
 const read = (p) => readFileSync(p, "utf8");
@@ -67,8 +67,7 @@ const pages = [
     body: setDetail({ ...ctx, set: s }),
   })),
   { path: "/docs/", title: "Docs", description: "Set up a Matteflux hero or footer in HTML/CSS, Framer or Webflow. Overlay, performance and common mistakes.", body: docs(ctx) },
-  { path: "/faq/", title: "Questions", body: faqPage(ctx) },
-  { path: "/404.html", title: "Page not found", heroSet: defaultSet, body: notFound(ctx), noindex: true, file: "404.html" },
+{ path: "/404.html", title: "Page not found", heroSet: defaultSet, body: notFound(ctx), noindex: true, file: "404.html" },
 ];
 
 for (const page of pages) {

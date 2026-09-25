@@ -110,14 +110,6 @@ export function home({ sets, faq, defaultSet: d }) {
     </div>
   </section>
 
-  <section class="section section--line section--tight">
-    <div class="wrap works">
-      <p class="kicker">Works with</p>
-      <ul class="works__list"><li><span class="mono faint">&lt;/&gt;</span> HTML / CSS</li><li>Framer</li><li>Webflow</li></ul>
-      <p class="muted small works__note">Copy-paste code for each, plus plain video files for anything else.</p>
-    </div>
-  </section>
-
   <section id="github" class="section section--line">
     <div class="wrap">
       <div class="free">
@@ -135,7 +127,7 @@ export function home({ sets, faq, defaultSet: d }) {
 
   <section class="section">
     <div class="wrap split">
-      <div class="split__side"><h2 class="h2">Questions</h2><a class="link-arrow" href="/faq/">All questions ${icons.arrow}</a></div>
+      <div class="split__side"><h2 class="h2">Questions</h2></div>
       <div class="split__main">${faqList(faq.filter((f) => f.home))}</div>
     </div>
   </section>
@@ -260,7 +252,6 @@ export function setDetail({ set: s, sets }) {
           <li><strong>code/webflow/</strong> head code, footer code, hero and footer embeds</li>
           <li><strong>README.md</strong> setup, overlay values</li>
         </ul>
-        ${codeBlock("code/html-css/example.html (excerpt)", "HTML", SNIPPET(s.slug))}
       </div>
     </div>
   </section>

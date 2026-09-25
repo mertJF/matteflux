@@ -19,6 +19,6 @@ export const config = {
   downloadUrl: (set) =>
     `https://github.com/mertJF/matteflux/releases/download/v1.0/matteflux-${set.num}-${set.slug}.zip`,
 
-  contactEmail: "[CONTACT_EMAIL]",
-  social: { x: "[X_URL]", dribbble: "[DRIBBBLE_URL]", behance: "[BEHANCE_URL]" },
+  contactEmail: "mertcukuren@gmail.com",
+  social: { x: "https://x.com/knyttmeve", dribbble: "https://dribbble.com/mert" },
 };
