@@ -1,5 +1,6 @@
-# Build & render artifacts
+# Build & render artifacts (production tools are private)
 production/build/
+production/*.py
 site/dist/
 site/.claude/
 .claude/
