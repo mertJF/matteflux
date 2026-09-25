@@ -215,8 +215,8 @@ export function setDetail({ set: s, sets }) {
         ${released ? html`<div class="buy__panel">
           <p class="buy__price">Free</p>
           <p class="muted small">Hero + footer, desktop + mobile. MP4 + WebM, posters and code.</p>
-          <a class="btn btn--solid btn--block" href="${config.githubRepo}" target="_blank" rel="noopener">${icons.github} Download on GitHub</a>
-          <p class="faint small">Star the repo to help others find it.</p>
+          <a class="btn btn--solid btn--block" href="${config.downloadUrl(s)}">${icons.download} Download ZIP</a>
+          <a class="btn btn--ghost btn--block" href="${config.githubRepo}" target="_blank" rel="noopener">${icons.github} Star on GitHub</a>
         </div>` : html`<div class="buy__panel">
           <p class="buy__price">Coming soon</p>
           <p class="muted small">This is an early preview. Final 2560 px renders, sizes and overlay values arrive with the release.</p>

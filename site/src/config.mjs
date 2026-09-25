@@ -15,6 +15,9 @@ export const config = {
 
   // GitHub repo — used for star CTA and download links.
   githubRepo: "https://github.com/mertJF/matteflux",
+  releaseTag: "v1.0",
+  downloadUrl: (set) =>
+    `https://github.com/mertJF/matteflux/releases/download/v1.0/matteflux-${set.num}-${set.slug}.zip`,
 
   contactEmail: "[CONTACT_EMAIL]",
   social: { x: "[X_URL]", dribbble: "[DRIBBBLE_URL]", behance: "[BEHANCE_URL]" },
