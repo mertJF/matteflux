@@ -1,5 +1,7 @@
 # Matteflux
 
+![Matteflux](site/public/og.jpg)
+
 Ambient motion for heroes & footers.
 
 Free, production-ready video backgrounds for websites. Each set is a matching hero and footer — same visual family, ready-made code, tiny files.
