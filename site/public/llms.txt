@@ -1,0 +1,150 @@
+# Matteflux
+
+> Ambient motion for heroes & footers.
+
+Matteflux provides free, production-ready video background components for websites. Each set is a matching hero and footer pair from the same visual family, with desktop and mobile compositions, poster images, and ready-made code for HTML/CSS, Framer, and Webflow.
+
+All sets are free for personal and commercial use (CC0 1.0).
+
+Website: https://matteflux.com
+GitHub: https://github.com/mertJF/matteflux
+Docs: https://matteflux.com/docs/
+
+## Available sets
+
+Dark Ambient collection:
+- Ember Aurora — amber light drifting over a teal dusk
+- Night Fog — slow, low-contrast haze rolling past
+- Deep Water — caustic light on a dark water surface
+- Silk — flowing fabric waves in warm bronze
+- Violet Tide — fluid violet folding into midnight navy
+- Nebula — warm and cool gas clouds drifting through deep space
+
+Earthen collection:
+- Mist — warm copper haze on a bright clay ground
+- Linen — bright golden fabric with amber warmth
+- Ripple — bright emerald refractions on a jade ground
+
+## What each set includes
+
+- Hero video: 2560x1440 (desktop, 16:9) + 1080x1920 (mobile, 9:16)
+- Footer video: 2560x854 (desktop, 3:1) + 1080x1350 (mobile, 4:5)
+- Formats: MP4 + WebM, 8-10 seconds, seamless loop, silent
+- Poster images: JPG + WebP for each video (instant LCP)
+- Code: HTML/CSS, Framer, Webflow integration files
+
+## Download
+
+All sets are available as ZIP files from GitHub Releases:
+https://github.com/mertJF/matteflux/releases/tag/v1.0
+
+ZIP filename pattern: matteflux-{num}-{slug}.zip
+Example: matteflux-01-ember-aurora.zip
+
+## Integration (HTML/CSS)
+
+Three files are needed: matteflux.css, matteflux.js, and the video/poster assets.
+
+### 1. Add the stylesheet and preload the hero poster:
+
+```html
+<link rel="preload" as="image" href="/posters/{slug}-hero-desktop.webp"
+      media="(min-width: 768px)" fetchpriority="high">
+<link rel="preload" as="image" href="/posters/{slug}-hero-mobile.webp"
+      media="(max-width: 767px)" fetchpriority="high">
+<link rel="stylesheet" href="/matteflux.css">
+```
+
+### 2. Hero section markup:
+
+```html
+<section class="mf-section mf-section--hero">
+  <div class="mf-bg" style="--mf-overlay: 0.2">
+    <picture class="mf-bg__poster">
+      <source media="(max-width: 767px)" srcset="/posters/{slug}-hero-mobile.webp" type="image/webp">
+      <source media="(max-width: 767px)" srcset="/posters/{slug}-hero-mobile.jpg">
+      <source srcset="/posters/{slug}-hero-desktop.webp" type="image/webp">
+      <img src="/posters/{slug}-hero-desktop.jpg" alt="" fetchpriority="high" decoding="async">
+    </picture>
+    <video class="mf-bg__video" muted loop playsinline preload="none" aria-hidden="true"
+           data-mf-load="eager"
+           data-mf-desktop="/hero/{slug}-hero-desktop"
+           data-mf-mobile="/hero/{slug}-hero-mobile"></video>
+    <div class="mf-bg__overlay"></div>
+  </div>
+  <!-- Your hero content goes here -->
+</section>
+```
+
+### 3. Footer section markup:
+
+```html
+<footer class="mf-section mf-section--footer">
+  <div class="mf-bg" style="--mf-overlay: 0.35">
+    <picture class="mf-bg__poster">
+      <source media="(max-width: 767px)" srcset="/posters/{slug}-footer-mobile.webp" type="image/webp">
+      <source media="(max-width: 767px)" srcset="/posters/{slug}-footer-mobile.jpg">
+      <source srcset="/posters/{slug}-footer-desktop.webp" type="image/webp">
+      <img src="/posters/{slug}-footer-desktop.jpg" alt="" loading="lazy" decoding="async">
+    </picture>
+    <video class="mf-bg__video" muted loop playsinline preload="none" aria-hidden="true"
+           data-mf-load="lazy"
+           data-mf-desktop="/footer/{slug}-footer-desktop"
+           data-mf-mobile="/footer/{slug}-footer-mobile"></video>
+    <div class="mf-bg__overlay"></div>
+  </div>
+  <!-- Your footer content goes here -->
+</footer>
+```
+
+### 4. Add the script before </body>:
+
+```html
+<script src="/matteflux.js" defer></script>
+```
+
+## Key CSS classes and variables
+
+- .mf-section — container with position: relative, overflow: hidden
+- .mf-section--hero — full viewport height (100svh)
+- .mf-section--footer — responsive height (clamp 360-720px desktop, 4:5 mobile)
+- .mf-bg — absolute positioned background layer (poster + video + overlay)
+- --mf-overlay — overlay darkness (0 = none, 1 = black). Typical: hero 0.2, footer 0.35
+- --mf-position — object-position for video/poster (default: 50% 50%)
+
+## JavaScript data attributes
+
+- data-mf-desktop — video path without extension (e.g. "/hero/ember-aurora-hero-desktop")
+- data-mf-mobile — mobile video path without extension
+- data-mf-load — "eager" for hero (loads immediately), "lazy" for footer (IntersectionObserver)
+- data-mf-breakpoint — mobile breakpoint in px (default: 767), set on any ancestor
+
+## Behavior
+
+- Automatically picks WebM or MP4 based on browser support
+- Switches between desktop and mobile compositions at the breakpoint
+- Lazy videos load when near viewport (300px margin)
+- Videos pause when off-screen
+- Respects prefers-reduced-motion: reduce (shows poster only)
+- Respects Save-Data header (shows poster only)
+- Call window.Matteflux.refresh() after dynamically adding new sections
+
+## Performance tips
+
+- Always preload the hero poster image
+- Use data-mf-load="eager" only for the hero, "lazy" for everything else
+- Host videos on a CDN for best loading speed
+- The poster image is the LCP element — make sure it is optimized
+- Videos are silent and small (typically under 2 MB each)
+
+## Overlay values
+
+Each set has tested overlay recommendations in its README. General guidelines:
+- Hero: 0.15-0.30 (lighter, the video is the star)
+- Footer: 0.25-0.45 (darker, text legibility matters more)
+- Increase overlay if placing light text over bright video areas
+
+## License
+
+Videos and posters: CC0 1.0 (public domain)
+Site code and integration files: MIT
