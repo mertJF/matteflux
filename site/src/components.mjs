@@ -185,7 +185,7 @@ export function layout({ page, assets, sets, defaultSet, body }) {
   const url = config.siteUrl + page.path;
   const title = page.title ? `${page.title} — Matteflux` : `Matteflux — ${config.tagline}`;
   const description = page.description || config.description;
-  const ogImage = config.siteUrl + posterPath(defaultSet, "hero", "desktop", "jpg");
+  const ogImage = config.siteUrl + "/og.jpg";
   const setsJson = JSON.stringify(sets.map((s) => ({
     slug: s.slug, num: s.num, name: s.name, rec: s.rec,
     hero: { d: mediaPath(s, "hero", "desktop"), m: mediaPath(s, "hero", "mobile") },
