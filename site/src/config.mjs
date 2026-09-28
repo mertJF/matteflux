@@ -20,5 +20,5 @@ export const config = {
     `https://github.com/mertJF/matteflux/releases/download/v1.0/matteflux-${set.num}-${set.slug}.zip`,
 
   contactEmail: "mertcukuren@gmail.com",
-  social: { x: "https://x.com/knyttmeve", dribbble: "https://dribbble.com/mert" },
+  social: { x: "https://x.com/knyttneve", dribbble: "https://dribbble.com/mert" },
 };
