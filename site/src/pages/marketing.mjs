@@ -33,7 +33,7 @@ export function home({ sets, faq, defaultSet: d }) {
   <section class="mf-section mf-section--hero site-hero" data-mf-slot="hero">
     ${mfLayer(d, "hero", { overlay: d.rec.hero, eager: true })}
     <div class="wrap site-hero__inner">
-      <p class="kicker">Collection 01 — Dark Ambient</p>
+      <p class="kicker">Two collections · ${sets.length} sets</p>
       <h1 class="display">Ambient motion for heroes &amp; footers.</h1>
       <p class="lead lead--hero">Matching video backgrounds for the top and the bottom of your site. Design, code and seamless loops included. Paste one in and it plays in minutes.</p>
       <div class="actions">
@@ -88,7 +88,17 @@ export function home({ sets, faq, defaultSet: d }) {
         <div><p class="kicker">Collection 01 — Dark Ambient</p><h2 class="h2">Hero above, footer below. Always a pair.</h2></div>
         <a class="link-arrow" href="/sets/">View all sets ${icons.arrow}</a>
       </div>
-      <div class="grid-3 grid-cards">${sets.map((s) => setCard(s))}</div>
+      <div class="grid-3 grid-cards">${sets.filter((s) => s.collection === "Dark Ambient").map((s) => setCard(s))}</div>
+    </div>
+  </section>
+
+  <section class="section section--line">
+    <div class="wrap stack-lg">
+      <div class="section-head">
+        <div><p class="kicker">Collection 02 — Earthen</p><h2 class="h2">Warm earth. Rich metal. Deep forest.</h2></div>
+        <a class="link-arrow" href="/sets/">View all sets ${icons.arrow}</a>
+      </div>
+      <div class="grid-3 grid-cards">${sets.filter((s) => s.collection === "Earthen").map((s) => setCard(s))}</div>
     </div>
   </section>
 
@@ -149,9 +159,9 @@ export function setsIndex({ sets, defaultSet: d }) {
   <section class="mf-section mf-section--hero page-hero" data-mf-slot="hero">
     ${mfLayer(d, "hero", { overlay: d.rec.hero, eager: true })}
     <div class="wrap page-hero__inner">
-      <p class="kicker">Collection 01 — Dark Ambient</p>
+      <p class="kicker">Dark Ambient · Earthen</p>
       <h1 class="h1">All sets</h1>
-      <p class="lead">${sets.length} hero and footer pairs. Hover a card to play it; open a set to try it on a real page.</p>
+      <p class="lead">${sets.length} hero and footer pairs across two collections. Hover a card to play it; open a set to try it on a real page.</p>
     </div>
   </section>
   <section class="section section--tight">

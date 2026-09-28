@@ -4,5 +4,8 @@
   { "num": "03", "slug": "deep-water", "name": "Deep Water", "desc": "Caustic light on a dark water surface.", "tone": "Blue", "motion": "Water", "status": "released", "collection": "Dark Ambient" },
   { "num": "04", "slug": "silk", "name": "Silk", "desc": "Flowing fabric waves in warm bronze.", "tone": "Gold", "motion": "Wave", "status": "released", "collection": "Dark Ambient" },
   { "num": "05", "slug": "violet-tide", "name": "Violet Tide", "desc": "Fluid violet folding into midnight navy.", "tone": "Violet", "motion": "Fluid", "status": "released", "collection": "Dark Ambient" },
-  { "num": "06", "slug": "nebula", "name": "Nebula", "desc": "Warm and cool gas clouds drifting through deep space.", "tone": "Rose", "motion": "Cloud", "status": "released", "collection": "Dark Ambient" }
+  { "num": "06", "slug": "nebula", "name": "Nebula", "desc": "Warm and cool gas clouds drifting through deep space.", "tone": "Rose", "motion": "Cloud", "status": "released", "collection": "Dark Ambient" },
+  { "num": "07", "slug": "mist", "name": "Mist", "desc": "Warm copper haze on a bright clay ground.", "tone": "Warm", "motion": "Cloud", "status": "released", "collection": "Earthen" },
+  { "num": "08", "slug": "linen", "name": "Linen", "desc": "Bright golden fabric with amber warmth.", "tone": "Gold", "motion": "Wave", "status": "released", "collection": "Earthen" },
+  { "num": "09", "slug": "ripple", "name": "Ripple", "desc": "Bright emerald refractions on a jade ground.", "tone": "Green", "motion": "Fluid", "status": "released", "collection": "Earthen" }
 ]

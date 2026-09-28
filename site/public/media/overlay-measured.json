@@ -130,5 +130,71 @@
       "mp4": 497588,
       "webm": 153264
     }
+  },
+  "mist": {
+    "hero-desktop": {
+      "overlay": 0.45,
+      "mp4": 1390870,
+      "webm": 341417
+    },
+    "hero-mobile": {
+      "overlay": 0.45,
+      "mp4": 728378,
+      "webm": 161598
+    },
+    "footer-desktop": {
+      "overlay": 0.45,
+      "mp4": 867809,
+      "webm": 284617
+    },
+    "footer-mobile": {
+      "overlay": 0.45,
+      "mp4": 565100,
+      "webm": 145646
+    }
+  },
+  "linen": {
+    "hero-desktop": {
+      "overlay": 0.50,
+      "mp4": 1469396,
+      "webm": 440215
+    },
+    "hero-mobile": {
+      "overlay": 0.50,
+      "mp4": 867455,
+      "webm": 254837
+    },
+    "footer-desktop": {
+      "overlay": 0.50,
+      "mp4": 989614,
+      "webm": 375118
+    },
+    "footer-mobile": {
+      "overlay": 0.50,
+      "mp4": 670646,
+      "webm": 233656
+    }
+  },
+  "ripple": {
+    "hero-desktop": {
+      "overlay": 0.45,
+      "mp4": 1703724,
+      "webm": 605066
+    },
+    "hero-mobile": {
+      "overlay": 0.45,
+      "mp4": 958159,
+      "webm": 295573
+    },
+    "footer-desktop": {
+      "overlay": 0.45,
+      "mp4": 1134524,
+      "webm": 527145
+    },
+    "footer-mobile": {
+      "overlay": 0.45,
+      "mp4": 694546,
+      "webm": 262762
+    }
   }
 }
