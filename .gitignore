@@ -5,6 +5,10 @@ site/dist/
 site/.claude/
 .claude/
 
+# Site tools (production pipeline)
+site/tools/*.py
+site/shots/
+
 # Node/Python
 node_modules/
 __pycache__/

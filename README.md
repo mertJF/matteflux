@@ -10,7 +10,9 @@ Visit **[matteflux.com](https://matteflux.com)** to browse, preview, and downloa
 
 ## ✨ What's Included
 
-- **6 curated video sets** (Dark Ambient collection)
+- **9 video sets** across two collections
+  - **Dark Ambient** (6 sets): Ember Aurora, Night Fog, Deep Water, Silk, Violet Tide, Nebula
+  - **Earthen** (3 sets): Mist, Linen, Ripple
   - Hero videos: 2560×1440 (desktop) + 1080×1920 (mobile)
   - Footer videos: 2560×854 (desktop) + 1080×1350 (mobile)
 - **Multiple formats**: MP4 + WebM, ultra-compressed for performance
