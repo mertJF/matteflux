@@ -217,7 +217,7 @@ ${page.heroSet ? html`<link rel="preload" as="image" href="${posterPath(page.her
 <link rel="preload" as="image" href="${posterPath(page.heroSet, "hero", "mobile", "webp")}" media="(max-width: 767px)" fetchpriority="high">` : ""}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&amp;family=Geist:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;display=swap">
 <link rel="stylesheet" href="${assets["matteflux.css"]}">
 <link rel="stylesheet" href="${assets["site.css"]}">
 </head>

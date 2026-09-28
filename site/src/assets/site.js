@@ -17,6 +17,7 @@
     JSON.parse($("#mf-sets").textContent).forEach(function (s) { SETS[s.slug] = s; });
   } catch (e) { /* no data: interactive parts stay static */ }
 
+
   function setSources(video, base) {
     if (video.getAttribute("data-base") === base) return false;
     video.setAttribute("data-base", base);
