@@ -1,4 +1,4 @@
-// Site-wide settings. Everything in [BRACKETS] still needs a real value.
+// Site-wide settings.
 export const config = {
   siteUrl: "https://matteflux.com",
   siteName: "Matteflux",
